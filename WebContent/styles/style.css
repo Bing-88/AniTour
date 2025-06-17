@@ -38,3 +38,61 @@ body{
   src: url("/AniTour/styles/fonts/Farro-Bold.ttf");
   font-weight: 700;
 }
+
+/* TOURS */
+.titolo
+{
+  text-align: center;
+  color: var(--accent);
+  font-size: 2.7rems;
+  font-weight: 700;
+}
+.card-container
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.card
+{
+  background-color: var(--card);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  width: 300px;
+  gap: 5rem;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  z-index: 1;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+.card-title
+{
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--primary);
+}
+.card-link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.card-link:hover {
+  color: var(--secondary);
+  cursor: pointer;
+}
+.card-text
+{
+  font-size: 1rem;
+}

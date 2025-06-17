@@ -17,123 +17,24 @@ body{
 
 @font-face {
   font-family: "Farro";
-  src: url("/styles/fonts/Farro-Light.ttf");
+  src: url("/AniTour/styles/fonts/Farro-Light.ttf");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Farro";
-  src: url("/styles/fonts/Farro-Regular.ttf");
+  src: url("/AniTour/styles/fonts/Farro-Regular.ttf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Farro";
-  src: url("/styles/fonts/Farro-Medium.ttf");
+  src: url("/AniTour/styles/fonts/Farro-Medium.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Farro";
-  src: url("/styles/fonts/Farro-Bold.ttf");
+  src: url("/AniTour/styles/fonts/Farro-Bold.ttf");
   font-weight: 700;
 }
-
-/*VARIABILI*/
-:root {
-    --text: #1c0b0b;
-    --background: #e9f6f9;
-    --primary: #d14241;
-    --secondary: #ea8c8b;
-    --accent: #e95756;
-    --card: #e9e1e3;
-}
-
-/*MAIN*/
-body{
-    font-family: "Farro";
-    background-color: var(--background);
-}
-
-@font-face {
-  font-family: Farro-Light;
-  src: url(/styles/fonts/Farro-Light.ttf);
-}
-
-@font-face {
-  font-family: Farro-Bold;
-  src: url(/styles/fonts/Farro-Bold.ttf);
-}
-
-@font-face {
-  font-family: Farro;
-  src: url(/styles/fonts/Farro-Regular.ttf);
-}
-
-@font-face {
-  font-family: Farro-Medium;
-  src: url(/styles/fonts/Farro-Medium.ttf);
-}
-
-/*LOGIN*/ 
-   * {
-      box-sizing: border-box;
-    }
-
-    #login-style {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      color: var(--text);
-      padding: 20px;
-    }
-
-    #login-box {
-      background-color: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 360px; /* limite massimo per desktop */
-    }
-
-    #login-box h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
-
-    #login-box input[type="text"],
-    #login-box input[type="password"] {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid var(--secondary);
-      border-radius: 0.5rem;
-      background-color: #fff;
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    #login-box input::placeholder {
-      color: grey;
-    }
-
-    #login-box button {
-      width: 100%;
-      padding: 0.75rem;
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: background-color 0.2s ease-in-out;
-    }
-
-    #login-box button:hover {
-      background-color: var(--primary);
-    }

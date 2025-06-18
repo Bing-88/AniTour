@@ -7,6 +7,39 @@
     --accent: #e95756;
     --card: #e9e1e3;
 }
+
+/*MAIN*/
+body{
+    font-family: "Farro";
+    background-color: var(--background);
+    font-weight: 400;
+    color: var(--text);
+}
+
+@font-face {
+  font-family: "Farro";
+  src: url("/AniTour/styles/fonts/Farro-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Farro";
+  src: url("/AniTour/styles/fonts/Farro-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Farro";
+  src: url("/AniTour/styles/fonts/Farro-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Farro";
+  src: url("/AniTour/styles/fonts/Farro-Bold.ttf");
+  font-weight: 700;
+}
+
 /*TOP PAGINA*/
    .fixed-header {
       position: fixed;
@@ -64,36 +97,6 @@
   cursor: pointer;
   display: block;
   align-self: flex-start;
-}
-/*MAIN*/
-body{
-    font-family: "Farro";
-    background-color: var(--background);
-    font-weight: 400;
-}
-
-@font-face {
-  font-family: "Farro";
-  src: url("/AniTour/styles/fonts/Farro-Light.ttf");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Farro";
-  src: url("/AniTour/styles/fonts/Farro-Regular.ttf");
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Farro";
-  src: url("/AniTour/styles/fonts/Farro-Medium.ttf");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "Farro";
-  src: url("/AniTour/styles/fonts/Farro-Bold.ttf");
-  font-weight: 700;
 }
 
 /*LOGIN*/ 

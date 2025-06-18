@@ -16,12 +16,20 @@
     <body id="login-style">
         <div id="login-box">
         <h2>Login</h2>
-        <form>
-            <input type="text" placeholder="Nome utente" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Accedi</button>
-        </form>
-  </div>
+            <form>
+                <input type="text" placeholder="Nome utente" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Accedi</button>
+            </form>
+        </div>
+
+        <header class="fixed-header">
+            <div class="header-content">
+                <img src="/AniTour/images/logo_anitour.png" alt="Logo" class="img-left">
+                <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
+            </div>
+        </header>
+
 
     </body>
 </html>

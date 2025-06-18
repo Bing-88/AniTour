@@ -10,10 +10,12 @@
         <header class="fixed-header">
             <div class="header-content">
                 <div class="header-left">
-                    <!-- Vuoto oppure aggiungi qui altro in futuro -->
+
                 </div> 
                 <div class="header-center">
-                    <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
+                  <a href="/AniTour/home.jsp">
+                    <img src="/AniTour/images/logo_anitour_full.png" alt="Logo" class="img-center" id="logo-full">
+                  </a> 
                 </div>
                 <div class="header-right">
                     <a href="login.jsp">
@@ -81,7 +83,7 @@
                 <div class="card-text"> 
                   Orbite perdute. Segreti antichi. Il tempo si piega, il mistero chiama.<br>
                   <div class="date">Dal 10 al 23 agosto.</div>
-                  Naviga tra stelle e ricordi, scopri ci&ograve; che l’universo nasconde.<br>
+                  Naviga tra stelle e ricordi, scopri ci&ograve; che l'universo nasconde.<br>
                   Questo e molto altro, nel tour a tema Outer Wilds.<br>
                 </div>
                 <div class="prezzo">da 9.567&euro;</div>

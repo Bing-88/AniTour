@@ -10,10 +10,22 @@
     <body>
         <header class="fixed-header">
             <div class="header-content">
-                <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
+                <div class="header-left">
+
+                </div> 
+                <div class="header-center">
+                  <a href="/AniTour/home.jsp">
+                    <img src="/AniTour/images/logo_anitour_full.png" alt="Logo" class="img-center" id="logo-full">
+                  </a> 
+                </div>
+                <div class="header-right">
+                    <a href="login.jsp">
+                        <img src="/AniTour/images/user-icon.png" alt="icona" class="login-icon">
+                    </a>
+                </div>
             </div>
         </header>
-        <div class="main-content">
+        <div class="main-content" id="main-content">
         <div class="title-wrapper">
             <p class="title1">Travel with your</p>
             <p class="title1 highlighted-text">FANTASY</p>

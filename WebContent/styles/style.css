@@ -168,6 +168,12 @@ body{
       font-size: 90%;
       text-align: center;
     }
+
+  #logo-full{
+    width:auto;
+    height: 3vw;
+  }
+  
 /* TOURS */
 .titolo
 {
@@ -356,6 +362,7 @@ body{
   outline: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   border-color: var(--accent);
+  color: var(--text);
 }
 
 .search-bar:focus::placeholder {

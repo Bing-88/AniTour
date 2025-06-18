@@ -1,14 +1,9 @@
 <!DOCTYPE <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Login</title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/AniTour/styles/style.css">
         <link rel="icon" href="/AniTour/images/anitour.ico">
@@ -32,9 +27,17 @@
 
         <header class="fixed-header">
             <div class="header-content">
-                <a href="tours.html" target="_blank">
-                <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
-                </a>
+                <div class="header-left">
+                    
+                </div> 
+                <div class="header-center">
+                  <a href="/AniTour/home.jsp">
+                    <img src="/AniTour/images/logo_anitour_full.png" alt="Logo" class="img-center" id="logo-full">
+                  </a> 
+                </div>
+                <div class="header-right">
+
+                </div>
             </div>
         </header>
         

@@ -17,30 +17,47 @@
     <body id="login-style">
         <div id="login-box">
         <h2>Login</h2>
-<<<<<<< Updated upstream:WebContent/login.html
-        <form>
-            <input type="text" placeholder="Nome utente" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Accedi</button>
-        </form>
-  </div>
-=======
             <form>
-                <input type="text" placeholder="Nome utente" required>
-                <input type="password" placeholder="Password" required>
+                <input type="text" placeholder="Nome utente" name="username" required>
+                <input type="password" placeholder="Password" name="password" required>
+                    <input type="checkbox" id="togglePassword"> Mostra password
                 <button type="submit">Accedi</button>
-                <p class="text">Non hai ancora un account?</p>
-                <buttom type="submit">Registati</buttom>
+                <br>
+                <p>Non hai ancora un Account?</p>
+                <button type="submit">Registati</buttom>
             </form>
         </div>
 
         <header class="fixed-header">
             <div class="header-content">
+                <a href="tours.html" target="_blank">
                 <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
+                </a>
             </div>
         </header>
+        
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
 
->>>>>>> Stashed changes:WebContent/login.jsp
+            if (username === "" || password === "") {
+                event.preventDefault(); // blocca l'invio del form
+                alert("Inserisci sia nome utente che password.");
+            } else {
+                // tutto ok, eventualmente puoi fare altre verifiche o inviare
+                console.log("Nome utente:", username);
+                console.log("Password:", password);
+            }
+            });
+        </script>
+
+        <script>
+            document.getElementById("togglePassword").addEventListener("change", function() {
+            const pwd = document.getElementById("password");
+            pwd.type = this.checked ? "text" : "password";
+            });
+        </script>
 
     </body>
 </html>

@@ -16,7 +16,7 @@
                     <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
                 </div>
                 <div class="header-right">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <img src="/AniTour/images/user-icon.png" alt="icona" class="login-icon">
                     </a>
                 </div>

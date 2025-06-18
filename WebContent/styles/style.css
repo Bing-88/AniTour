@@ -158,3 +158,13 @@ body{
 {
   font-size: 1rem;
 }
+
+/*HOME*/
+.highlighted-text{
+  color: var(--primary);
+}
+
+.title1{
+  display: inline;
+  font-weight: 700;
+}

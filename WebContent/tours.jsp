@@ -9,7 +9,17 @@
     <body>
         <header class="fixed-header">
             <div class="header-content">
-                <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
+                <div class="header-left">
+                    <!-- Vuoto oppure aggiungi qui altro in futuro -->
+                </div> 
+                <div class="header-center">
+                    <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
+                </div>
+                <div class="header-right">
+                    <a href="login.html">
+                        <img src="/AniTour/images/user-icon.png" alt="icona" class="img-left">
+                    </a>
+                </div>
             </div>
         </header>
         <h1 class="titolo">TOUR DISPONIBILI</h1>
@@ -20,7 +30,7 @@
                     <a class="card-link" href="persona5.html">persona 5</a>
                 </div>
                 <div class="card-text">
-                    Maschere calate. Cuori da rubare. Ribellione tra ombre e città lucenti.<br>
+                    Maschere calate. Cuori da rubare. Ribellione tra ombre e citt&agrave; lucenti.<br>
                     Dal 24 giugno al 7 luglio.<br>
                     Infiltrati nei Palazzi dell’ordinario, risveglia il tuo io!<br>
                     Questo e molto altro, nel tour a tema Persona 5.

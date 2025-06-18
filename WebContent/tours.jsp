@@ -6,6 +6,11 @@
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
+        <header class="fixed-header">
+            <div class="header-content">
+                <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
+            </div>
+        </header>
         <h1 class="titolo">TOUR DISPONIBILI</h1>
         <div class="card-container">
             <div class="card">

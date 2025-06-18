@@ -84,12 +84,20 @@ body{
   color: var(--primary);
 }
 .card-link {
+ color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.card-link,
+.card-link:visited,
+.card-link:active {
   color: var(--primary);
   text-decoration: none;
   transition: color 0.2s;
 }
+
 .card-link:hover {
-  color: var(--secondary);
+  color: var(--accent);
   cursor: pointer;
 }
 .card-text

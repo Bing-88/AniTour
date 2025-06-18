@@ -167,21 +167,28 @@ body{
   font-weight: 700;
   margin-top: 120px;
 }
-.card-container
-{
+.card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
+  align-items: stretch; /* aggiungi questa riga */
 }
-.card
-{
+
+.card {
+  position: relative;
+  overflow: hidden;
   background-color: var(--card);
   border-radius: 1.25rem;
   padding: 2rem;
   width: 300px;
-  gap: 5rem;
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;           /* aggiungi */
+  flex-direction: column;  /* aggiungi */
+  min-height: 480px;       /* aggiungi o regola il valore */
 }
+
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
@@ -195,32 +202,54 @@ body{
   border-radius: 1rem;
   margin-bottom: 1rem;
   object-fit: cover;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,.8);
 }
-.card-title
-{
+
+.card:hover .card-img {
+  transform: scale(1.08);
+  filter: brightness(1.08) saturate(1.2);
+}
+
+.card-title {
   font-size: 1.75rem;
   font-weight: 600;
   text-align: center;
   color: var(--primary);
 }
-.card-link {
- color: var(--primary);
-  text-decoration: none;
-  transition: color 0.2s;
+
+.card-text {
+  font-size: 1rem;
 }
-.card-link,
-.card-link:visited,
-.card-link:active {
+.date
+{
   color: var(--primary);
-  text-decoration: none;
-  transition: color 0.2s;
+}
+.card-img-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(234, 140, 139, 0.4); 
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: opacity 0.3s;
+  border-radius: 1rem;
+  pointer-events: none;
 }
 
-.card-link:hover {
-  color: var(--accent);
-  cursor: pointer;
+.card:hover .card-img-overlay {
+  opacity: 1;
 }
-.card-text
-{
-  font-size: 1rem;
+
+.card-link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.card-link-wrapper .card {
+  cursor: pointer;
 }

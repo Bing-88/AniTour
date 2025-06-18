@@ -50,7 +50,7 @@
                 <div class="card-text"> 
                     Orbite perdute. Segreti antichi. Il tempo si piega, il mistero chiama.<br>
                     Dal 10 al 23 agosto.<br>
-                    Naviga tra stelle e ricordi, scopri ci&ograve; che l’universo nasconde.<br>
+                    Naviga tra stelle e ricordi, scopri ciò che l’universo nasconde.<br>
                     Questo e molto altro, nel tour a tema Outer Wilds.
                 </div>
             </div>
@@ -60,9 +60,9 @@
                     <a class="card-link" href="kon.html">k-on</a>
                 </div>
                 <div class="card-text">
-                    Note leggere. Risate sincere. T&egrave;, chitarre e amicizie che brillano.<br>
+                    Note leggere. Risate sincere. Tè, chitarre e amicizie che brillano.<br>
                     Dal 1 giugno al 14 luglio.<br>
-                    Dalla scuola al palco, ogni giorno &egrave; un piccolo concerto.<br>
+                    Dalla scuola al palco, ogni giorno è un piccolo concerto.<br>
                     Questo e molto altro, nel tour a tema K-ON!
                 </div>
             </div>
@@ -72,9 +72,9 @@
                     <a class="card-link" href="vinlandsaga.html">vinland saga</a>
                 </div>
                 <div class="card-text">
-                    Vento del nord. Lame sporche di fango e destino. Onore, vendetta, libert&agrave;.<br>
+                    Vento del nord. Lame sporche di fango e destino. Onore, vendetta, libertà.<br>
                     Dal 1° al 14 luglio.<br>
-                    Dalle coste gelide alla terra promessa, ogni passo &egrave; guerra e rinascita.<br>
+                    Dalle coste gelide alla terra promessa, ogni passo è guerra e rinascita.<br>
                     Questo e molto altro, nel tour a tema Vinland Saga!
                 </div>            
         </div>

@@ -17,7 +17,7 @@
                 </div>
                 <div class="header-right">
                     <a href="login.html">
-                        <img src="/AniTour/images/user-icon.png" alt="icona" class="img-left">
+                        <img src="/AniTour/images/user-icon.png" alt="icona" class="login-icon">
                     </a>
                 </div>
             </div>

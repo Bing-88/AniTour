@@ -8,7 +8,7 @@
     --card: #e9e1e3;
 }
 /*TOP PAGINA*/
-  .fixed-header {
+   .fixed-header {
       position: fixed;
       top: 0;
       left: 0;
@@ -55,7 +55,7 @@
       width: auto;
       max-width: 100%;
     }
-  .img-left {
+  .login-icon {
   height: 32px;
   width: 32px;
   object-fit: cover;

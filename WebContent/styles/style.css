@@ -7,7 +7,64 @@
     --accent: #e95756;
     --card: #e9e1e3;
 }
+/*TOP PAGINA*/
+   .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10%;
+      background-color: var(--card);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      padding: 1px 20px;
+      overflow: visible;
+    }
 
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .header-left,
+    .header-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-center {
+      flex: 0 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header-left {
+      justify-content: flex-start;
+    }
+
+    .header-right {
+      justify-content: flex-end;
+    }
+
+    .img-center {
+      height: 100px;
+      width: auto;
+      max-width: 100%;
+    }
+  .login-icon {
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  margin-right: auto;
+  margin-left: 0;
+  cursor: pointer;
+  display: block;
+  align-self: flex-start;
+}
 /*MAIN*/
 body{
     font-family: "Farro";
@@ -106,24 +163,32 @@ body{
 {
   text-align: center;
   color: var(--accent);
-  font-size: 2.7rems;
+  font-size: 2.7rem;
   font-weight: 700;
+  margin-top: 120px;
 }
-.card-container
-{
+.card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
+  align-items: stretch; /* aggiungi questa riga */
 }
-.card
-{
+
+.card {
+  position: relative;
+  overflow: hidden;
   background-color: var(--card);
   border-radius: 1.25rem;
-  padding: 2rem;
+  padding:  2rem 2rem 1rem 2rem;
   width: 300px;
-  gap: 5rem;
+  box-sizing: border-box;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;           /* aggiungi */
+  flex-direction: column;  /* aggiungi */
+  min-height: 480px;       /* aggiungi o regola il valore */
 }
+
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
@@ -138,29 +203,223 @@ body{
   border-radius: 1rem;
   margin-bottom: 1rem;
   object-fit: cover;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,.8);
 }
-.card-title
-{
+
+.card:hover .card-img {
+  transform: scale(1.08);
+  filter: brightness(1.08) saturate(1.2);
+}
+.card:hover .prezzo{
+  transform: scale(1.35); 
+  filter: brightness(1.2) saturate(1.2);
+
+}
+.card-title {
   font-size: 1.75rem;
   font-weight: 600;
   text-align: center;
   color: var(--primary);
 }
-.card-link {
-  color: var(--primary);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.card-link:hover {
-  color: var(--secondary);
-  cursor: pointer;
-}
-.card-text
-{
+
+.card-text {
   font-size: 1rem;
 }
-=======
-    /*TOP PAGINA*/
+.date
+{
+  color: var(--secondary);
+  font-weight: bold;
+}
+.prezzo
+{
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 0;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,.8); /* più fluido */
+}
+.card-img-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(234, 140, 139, 0.4); 
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: opacity 0.3s;
+  border-radius: 1rem;
+  pointer-events: none;
+}
+
+.card:hover .card-img-overlay {
+  opacity: 1;
+}
+
+.card-link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.card-link-wrapper .card {
+  cursor: pointer;
+}
+
+/*HOME*/
+.highlighted-text{
+  color: var(--primary);
+}
+
+.title1{
+  display: block;
+  font-weight: 700;
+  font-size: 4rem;
+  margin: 0;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.title-wrapper {
+  display: inline;
+  white-space: nowrap;
+}
+
+
+.search-form {
+    flex-direction: column;
+    display: flex;
+    gap: 0.5rem;
+    
+}
+
+.search-labels {
+  margin-top: 1rem;
+  gap: 1rem;
+  text-align: left;
+  margin-left: 3%;
+}
+
+.search-element{
+  display: inline;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+/*HOME*/
+.highlighted-text{
+  color: var(--primary);
+}
+
+.title1{
+  display: block;
+  font-weight: 700;
+  font-size: 4rem;
+  margin: 0;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.title-wrapper {
+  display: inline;
+  white-space: nowrap;
+}
+
+
+.search-form {
+    flex-direction: column;
+    display: flex;
+    gap: 0.5rem;
+    
+}
+
+.search-labels {
+  margin-top: 1rem;
+  gap: 1rem;
+  text-align: left;
+  margin-left: 3%;
+}
+
+.search-element{
+  display: inline;
+  text-decoration: underline;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  width: 60vw;
+  height: 8vh;
+}
+
+.search-bar {
+  width: 100%;
+  height: 100%;
+  border-radius: 5vh;
+  background-color: var(--card);
+  border: 2px solid var(--primary);
+  padding: 1rem 2.5rem 1rem 2rem; /* spazio extra a destra per l’icona */
+  font-size: 1.25rem;
+  font-family: "Farro";
+  font-weight: 500;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.search-bar::placeholder {
+  color: #6c6c6c;
+  transition: color 0.3s ease;
+  font-family: "Farro";
+}
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent);
+}
+
+.search-bar:focus::placeholder {
+  color: transparent;
+}
+
+.search-icon {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  width: auto;
+  height: 50%;
+}
+
+.search-bar:focus + .search-icon {
+  opacity: 1;
+}
+
+
+/*TOP PAGINA*/
 
     .fixed-header {
       position: fixed;
@@ -187,4 +446,3 @@ body{
       height: 105px;
       width: auto;
     }
->>>>>>> Stashed changes

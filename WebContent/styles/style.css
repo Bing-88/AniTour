@@ -82,13 +82,10 @@ body{
   font-weight: 600;
   text-align: center;
   color: var(--primary);
-}
-.card-link {
-  color: var(--primary);
-  text-decoration: none;
+   text-decoration: none;
   transition: color 0.2s;
 }
-.card-link:hover {
+.card-title:hover {
   color: var(--secondary);
   cursor: pointer;
 }

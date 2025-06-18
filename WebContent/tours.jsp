@@ -20,10 +20,10 @@
                     Questo e molto altro, nel tour a tema Persona 5.
                 </div>
             </div>
-            <div class="card">
+            <a href="bloodborne.html" class="card">
                 <img class="card-img" src="/AniTour/images/bloodborne.jpg" alt="bloodborne">
                 <div class="card-title">
-                    <a class="card-link" href="bloodborne.html">bloodborne</a>
+                    <div class="card-link">bloodborne</a>
                 </div> 
                 <div class="card-text">Nebbia eterna. Campane lontane. Pietra, sangue e sogni spezzati.<br>
                     Questo ed altro nel tour a tema Bloodborne, dal 12 al 19 febbraio.<br>

@@ -18,9 +18,11 @@
         <div id="login-box">
         <h2>Login</h2>
             <form>
-                <input type="text" placeholder="Nome utente" name="username" required>
-                <input type="password" placeholder="Password" name="password" required>
-                    <input type="checkbox" id="togglePassword"> Mostra password
+                <input type="text" id="username" placeholder="Nome utente" name="username" required>
+                <input type="password" id="password" placeholder="Password" name="password" required>
+                <div id="capsWarning" style="display:none; color: violet; font-weight: 700;">Caps Lock attivo!</div>
+                    <input type="checkbox" id="togglePassword"> <p>mostra password</p>
+                    <br>
                 <button type="submit">Accedi</button>
                 <br>
                 <p>Non hai ancora un Account?</p>
@@ -42,10 +44,10 @@
             const password = document.getElementById("password").value.trim();
 
             if (username === "" || password === "") {
-                event.preventDefault(); // blocca l'invio del form
+                event.preventDefault(); 
                 alert("Inserisci sia nome utente che password.");
             } else {
-                // tutto ok, eventualmente puoi fare altre verifiche o inviare
+                
                 console.log("Nome utente:", username);
                 console.log("Password:", password);
             }
@@ -59,5 +61,11 @@
             });
         </script>
 
+        <script>
+            document.getElementById("password").addEventListener("keyup", function(e) {
+            const warning = document.getElementById("capsWarning");
+            warning.style.display = e.getModifierState("CapsLock") ? "block" : "none";
+            });
+        </script>
     </body>
 </html>

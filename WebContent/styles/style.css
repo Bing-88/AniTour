@@ -180,7 +180,7 @@ body{
   overflow: hidden;
   background-color: var(--card);
   border-radius: 1.25rem;
-  padding: 2rem;
+  padding:  2rem 2rem 1rem 2rem;
   width: 300px;
   box-sizing: border-box;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -209,7 +209,11 @@ body{
   transform: scale(1.08);
   filter: brightness(1.08) saturate(1.2);
 }
+.card:hover .prezzo{
+  transform: scale(1.35); 
+  filter: brightness(1.2) saturate(1.2);
 
+}
 .card-title {
   font-size: 1.75rem;
   font-weight: 600;
@@ -222,7 +226,18 @@ body{
 }
 .date
 {
+  color: var(--secondary);
+  font-weight: bold;
+}
+.prezzo
+{
   color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 0;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,.8); /* più fluido */
 }
 .card-img-overlay {
   position: absolute;

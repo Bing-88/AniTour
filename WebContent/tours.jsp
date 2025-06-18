@@ -16,7 +16,7 @@
                     <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
                 </div>
                 <div class="header-right">
-                    <a href="login.html">
+                    <a href="login.jsp">
                         <img src="/AniTour/images/user-icon.png" alt="icona" class="login-icon">
                     </a>
                 </div>
@@ -35,7 +35,7 @@
                   Maschere calate. Cuori da rubare. Ribellione tra ombre e citt&agrave; lucenti.<br>
                   <div class="date">Dal 24 giugno al 7 luglio.</div>
                   Unisciti ai Ladri Fantasma, scopri la verit&agrave;.
-                  Infiltrati nei Palazzi dell’ordinario, risveglia il tuo io!<br>
+                  Infiltrati nei Palazzi dell&rsquo;ordinario, risveglia il tuo io!<br>
                   Questo e molto altro, nel tour a tema Persona 5.<br>
                 </div>
                 <div class="prezzo">da 2.456&euro;</div>

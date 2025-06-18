@@ -400,14 +400,7 @@ body{
       justify-content: center;
       position: relative;
     }
-
-    .img-left {
-      position: absolute;
-      left: 20px;
-      height: 40px;
-      margin-right: 20px;
-    }
-
+    
     .img-center {
       height: 105px;
       width: auto;

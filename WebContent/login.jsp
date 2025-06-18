@@ -11,25 +11,36 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/AniTour/styles/style.css">
+        <link rel="icon" href="/AniTour/images/anitour.ico">
     </head>
     
     <body id="login-style">
         <div id="login-box">
         <h2>Login</h2>
+<<<<<<< Updated upstream:WebContent/login.html
+        <form>
+            <input type="text" placeholder="Nome utente" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Accedi</button>
+        </form>
+  </div>
+=======
             <form>
                 <input type="text" placeholder="Nome utente" required>
                 <input type="password" placeholder="Password" required>
                 <button type="submit">Accedi</button>
+                <p class="text">Non hai ancora un account?</p>
+                <buttom type="submit">Registati</buttom>
             </form>
         </div>
 
         <header class="fixed-header">
             <div class="header-content">
-                <img src="/AniTour/images/logo_anitour.png" alt="Logo" class="img-left">
                 <img src="/AniTour/images/logo_anitour_extended.png" alt="Marchio" class="img-center">
             </div>
         </header>
 
+>>>>>>> Stashed changes:WebContent/login.jsp
 
     </body>
 </html>

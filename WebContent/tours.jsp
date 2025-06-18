@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>tours</title>
+        <link rel="icon" href="/AniTour/images/anitour.ico">
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>

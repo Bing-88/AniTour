@@ -28,17 +28,10 @@
       justify-content: center;
       position: relative;
     }
-
-    .img-left {
-      position: absolute;
-      left: 20px;
-      height: 40px;
-      margin-right: 20px;
-    }
-
     .img-center {
-      height: 105px;
+      height: 100px;
       width: auto;
+      max-width: 100%;
     }
 /*MAIN*/
 body{
@@ -76,8 +69,9 @@ body{
 {
   text-align: center;
   color: var(--accent);
-  font-size: 2.7rems;
+  font-size: 2.7rem;
   font-weight: 700;
+  margin-top: 120px;
 }
 .card-container
 {

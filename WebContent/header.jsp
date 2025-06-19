@@ -14,3 +14,4 @@
                     </a>
                 </div>
             </div>
+            <script src="/AniTour/scripts/logo-responsive.js"></script>

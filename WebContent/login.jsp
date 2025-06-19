@@ -64,7 +64,7 @@
             warning.style.display = e.getModifierState("CapsLock") ? "block" : "none";
             });
         </script>
-        <footer>
+        <footer id="footer-login">
             <%@ include file="footer.jsp" %>
         </footer>
     </div>

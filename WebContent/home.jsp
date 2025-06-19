@@ -9,7 +9,7 @@
         <link rel="icon" href="/AniTour/images/anitour.ico">
     </head>
     <body>
-        <header class="fixed-header">
+        <header id="fixed-header">
             <%@ include file="header.jsp" %>
         </header>
         <div class="main-content" id="main-content">

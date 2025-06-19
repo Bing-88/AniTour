@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="styles/style.css">
     </head>
     <body>
-        <header class="fixed-header">
+        <header id="fixed-header">
             <%@ include file="header.jsp" %>
         </header>
         <h1 class="titolo">TOUR DISPONIBILI</h1>

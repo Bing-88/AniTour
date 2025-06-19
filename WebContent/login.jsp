@@ -11,28 +11,31 @@
     </head>
     
     <body>
+    <div class="page-container">
         <header id="fixed-header">
             <%@ include file="header.jsp" %>
         </header>
-        <div id="login-style">
-            <div id="login-box">
-            <h2>Login</h2>
-                <form>
-                    <input type="text" id="username" placeholder="Nome utente" name="username" required>
-                    <input type="password" id="password" placeholder="Password" name="password" required>
-                    <div id="capsWarning" style="display:none; color: violet; font-weight: 700;">Caps Lock attivo!</div>
-                    <label>Mostra password
-                        <input type="checkbox" id="togglePassword">
-                    </label>
-                    <br><br>
-                    <button type="submit" class="btn1">Accedi</button>
-                    <br>
-                    <p>Non hai ancora un account?</p>
-                    <button type="submit" class="btn1">Registrati</button>
-                </form>
+
+        <div class="main-content">
+            <div id="login-style">
+                <div id="login-box">
+                    <h2>Login</h2>
+                        <form>
+                            <input type="text" id="username" placeholder="Nome utente" name="username" required>
+                            <input type="password" id="password" placeholder="Password" name="password" required>
+                            <div id="capsWarning" style="display:none; color: violet; font-weight: 700;">Caps Lock attivo!</div>
+                            <label>Mostra password
+                                <input type="checkbox" id="togglePassword">
+                            </label>
+                            <br><br>
+                            <button type="submit" class="btn1">Accedi</button>
+                            <br>
+                            <p>Non hai ancora un account?</p>
+                            <button type="submit" class="btn1">Registrati</button>
+                        </form>
+                    </div>
             </div>
         </div>
-        
         <script>
             document.getElementById("loginForm").addEventListener("submit", function(event) {
             const username = document.getElementById("username").value.trim();
@@ -48,7 +51,6 @@
             }
             });
         </script>
-
         <script>
             document.getElementById("togglePassword").addEventListener("change", function() {
             const pwd = document.getElementById("password");
@@ -62,5 +64,10 @@
             warning.style.display = e.getModifierState("CapsLock") ? "block" : "none";
             });
         </script>
+        <footer>
+            <%@ include file="footer.jsp" %>
+        </footer>
+    </div>
     </body>
 </html>
+

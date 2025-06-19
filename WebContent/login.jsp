@@ -9,22 +9,25 @@
         <link rel="icon" href="/AniTour/images/anitour.ico">
     </head>
     
-    <body id="login-style">
-        <div id="login-box">
-        <h2>Login</h2>
-            <form>
-                <input type="text" id="username" placeholder="Nome utente" name="username" required>
-                <input type="password" id="password" placeholder="Password" name="password" required>
-                <div id="capsWarning" style="display:none; color: violet; font-weight: 700;">Caps Lock attivo!</div>
-                    <input type="checkbox" id="togglePassword"> <p>mostra password</p>
+    <body>
+        <div id="login-style">
+            <div id="login-box">
+            <h2>Login</h2>
+                <form>
+                    <input type="text" id="username" placeholder="Nome utente" name="username" required>
+                    <input type="password" id="password" placeholder="Password" name="password" required>
+                    <div id="capsWarning" style="display:none; color: violet; font-weight: 700;">Caps Lock attivo!</div>
+                    <label>Mostra password
+                        <input type="checkbox" id="togglePassword">
+                    </label>
+                    <br><br>
+                    <button type="submit" class="btn1">Accedi</button>
                     <br>
-                <button type="submit">Accedi</button>
-                <br>
-                <p>Non hai ancora un Account?</p>
-                <button type="submit">Registati</buttom>
-            </form>
+                    <p>Non hai ancora un account?</p>
+                    <button type="submit" class="btn1">Registrati</button>
+                </form>
+            </div>
         </div>
-
         <header class="fixed-header">
             <div class="header-content">
                 <div class="header-left">

@@ -16,6 +16,27 @@ body{
     color: var(--text);
 }
 
+.btn1 {
+  color: var(--background);
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+  font-family: "Farro";
+}
+
+
+.btn1:hover {
+  background-color: var(--primary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
 @font-face {
   font-family: "Farro";
   src: url("/AniTour/styles/fonts/Farro-Light.ttf");
@@ -41,63 +62,67 @@ body{
 }
 
 /*TOP PAGINA*/
-   .fixed-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 10%;
-      background-color: var(--card);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-      padding: 1px 20px;
-      overflow: visible;
-    }
+  #logo-full{
+    width:auto;
+    height: 3vw;
+  }
 
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-    }
+  .fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: var(--card);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 1px 20px;
+    overflow: visible;
+  }
 
-    .header-left,
-    .header-right {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .header-left,
+  .header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
 
-    .header-center {
-      flex: 0 1 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .header-center {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    .header-left {
-      justify-content: flex-start;
-    }
+  .header-left {
+    justify-content: flex-start;
+  }
 
-    .header-right {
-      justify-content: flex-end;
-    }
+  .header-right {
+    justify-content: flex-end;
+  }
 
-    .img-center {
-      height: 100px;
-      width: auto;
-      max-width: 100%;
-    }
+  .img-center {
+    height: 100px;
+    width: auto;
+    max-width: 100%;
+  }
+
   .login-icon {
-  height: 32px;
-  width: 32px;
-  object-fit: cover;
-  margin-right: auto;
-  margin-left: 0;
-  cursor: pointer;
-  display: block;
-  align-self: flex-start;
-}
+    width: 32px;
+    object-fit: cover;
+    margin-right: auto;
+    margin-left: 0;
+    cursor: pointer;
+    display: block;
+    align-self: flex-start;
+  }
 
 /*LOGIN*/ 
    * {
@@ -120,7 +145,7 @@ body{
       border-radius: 1rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       width: 100%;
-      max-width: 360px; /* limite massimo per desktop */
+      max-width: 360px;
     }
 
     #login-box h2 {
@@ -134,33 +159,26 @@ body{
       width: 100%;
       padding: 0.75rem;
       margin-bottom: 1rem;
-      border: 2px solid var(--primary);
+      border: 2px solid var(--accent);
       border-radius: 1rem;
       background-color: var(--background);
       color: var(--text);
       font-size: 1rem;
+      font-family: "Farro";
     }
 
     #login-box input::placeholder {
       color: #6c6c6c;
-;
+      transition: color 0.3 ease;
     }
 
-    #login-box button {
-      width: 100%;
-      padding: 0.75rem;
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 1rem;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: background-color 0.2s ease-in-out;
-    }
-
-    #login-box button:hover {
-      background-color: var(--primary);
+    #login-box input:focus{
+      transition: color 0.3s ease;
+      outline: none;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      background-color: var(--card);
     }
 
     #login-box p {
@@ -168,11 +186,6 @@ body{
       font-size: 90%;
       text-align: center;
     }
-
-  #logo-full{
-    width:auto;
-    height: 3vw;
-  }
   
 /* TOURS */
 .titolo
@@ -343,7 +356,7 @@ body{
   width: 100%;
   height: 100%;
   border-radius: 5vh;
-  background-color: var(--card);
+  background-color: transparent;
   border: 2px solid var(--primary);
   padding: 1rem 2.5rem 1rem 2rem; /* spazio extra a destra per l’icona */
   font-size: 1.25rem;
@@ -363,6 +376,7 @@ body{
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   border-color: var(--accent);
   color: var(--text);
+  background-color: var(--card);
 }
 
 .search-bar:focus::placeholder {

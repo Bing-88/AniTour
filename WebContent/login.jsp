@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE <!DOCTYPE html>
 <html>
     <head>
@@ -10,6 +11,9 @@
     </head>
     
     <body>
+        <header class="fixed-header">
+            <%@ include file="header.jsp" %>
+        </header>
         <div id="login-style">
             <div id="login-box">
             <h2>Login</h2>
@@ -28,21 +32,6 @@
                 </form>
             </div>
         </div>
-        <header class="fixed-header">
-            <div class="header-content">
-                <div class="header-left">
-                    
-                </div> 
-                <div class="header-center">
-                  <a href="/AniTour/home.jsp">
-                    <img src="/AniTour/images/logo_anitour_full.png" alt="Logo" class="img-center" id="logo-full">
-                  </a> 
-                </div>
-                <div class="header-right">
-
-                </div>
-            </div>
-        </header>
         
         <script>
             document.getElementById("loginForm").addEventListener("submit", function(event) {

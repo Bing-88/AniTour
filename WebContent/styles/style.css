@@ -602,39 +602,100 @@ html, body {
   transform: skewX(15deg);
   font-style: italic; 
 }
-/*FOOTER*/
-footer{
-  background-color: var(--card);
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-  z-index: 1000;
-  padding: 1vh 0 0 0;
-  margin-top: 3rem;
+.p5-date
+{
+  color: #F11C24ff; /* Rosso vivace come nella palette di Persona 5 */
+  font-weight: bold;
+  font-size: 1.1em;
+  display: inline-block;
+  margin-bottom: 25px;
+  transition: transform 0.2s ease;
 }
 
-#footer-content {
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  z-index: 1000;
-  font-weight: 10%;
+.p5-date:hover {
+  transform: scale(1.05);
 }
 
-#footer-content img {
-  margin-top: 1vh;
-  height: 5vh;
+/* Ottimizzazione dei box per le date */
+.p5-date-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: #E02B0C;
+  color: #000;
+  margin: 0 1px;
+  position: relative;
+  transform: skewX(-15deg);
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  transition: transform 0.3s ease;
 }
 
-#footer-login {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 1000;
-  margin-top: 0;
-  padding-bottom: 0;
+/* Responsive per i box delle date su schermi piccoli */
+@media (max-width: 480px) {
+  .p5-date-box {
+    width: 24px;
+    height: 24px;
+    font-size: 0.9em;
+  }
 }
 
+.p5-date-inner {
+  display: inline-block;
+  transform: skewX(15deg);
+  font-weight: bold;
+}
+
+.p5-date-box.date-only:hover {
+  transform: skewX(-15deg) scale(1.2);
+}
+
+/* Miglioramento responsive per cardp5 */
+.cardp5 {
+  padding: 2.5rem 2rem 2rem 2rem; /* Ridotto padding orizzontale */
+  width: 90vw;
+  max-width: 1200px;
+  margin: 2rem auto 6rem auto;
+}
+
+@media (max-width: 768px) {
+  .cardp5 {
+    padding: 1.5rem 1rem 1rem 1rem;
+    width: 95vw;
+    margin: 1rem auto 4rem auto;
+  }
+  
+  .persona5-balloon-title {
+    font-size: 1.5rem;
+  }
+  
+  .cardp5 h2 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .persona5-balloon-shape {
+    padding: 0.8rem 1vw;
+  }
+  
+  .cardp5 ol li {
+    padding: 1rem 1rem 1rem 2.5rem;
+  }
+}
+
+/* Pulizia e miglioramento effetti testo */
+.p5-texteffect, .p5-texteffect-white, .p5-texteffect-yellow {
+  padding: 2px 4px; /* Ridotto da 7px a 4px */
+  margin: 0 1px;
+}
+
+@media (max-width: 480px) {
+  .p5-texteffect, .p5-texteffect-white, .p5-texteffect-yellow {
+    padding: 1px 3px;
+  }
+}
 /*FOOTER PERSONA 5*/
 .footerp5 {
   background-color: var(--card) !important;
@@ -736,4 +797,97 @@ body.bg footer.footerp5 {
 .cardp5 ol li:nth-child(even) strong {
   color: #F6EB13;
 }
+.p5-buy-container {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0 2rem 0;
+}
+
+.p5-buy-btn {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  border: none;
+  border-bottom: 3px solid #E02B0C;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  animation: subtle-float 2s ease-in-out infinite;
+}
+
+.p5-buy-btn .p5-texteffect,
+.p5-buy-btn .p5-texteffect-yellow {
+  background-color: #E02B0C !important;
+  transition: background-color 0.3s ease, transform 0.3s ease, filter 0.3s ease !important;
+  animation: letter-pulse 3s ease-in-out infinite;
+  animation-delay: calc(var(--letter-index) * 0.2s);
+}
+
+.p5-buy-btn:hover .p5-texteffect,
+.p5-buy-btn:hover .p5-texteffect-yellow {
+  background-color: #F6EB13 !important; 
+  transform: skewX(-15deg) scale(1.1) !important;
+  filter: brightness(1.2) !important;
+}
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.p5-buy-btn:hover {
+  box-shadow: 0 0 12px 2px rgba(224, 43, 12, 0.5);
+  animation: none;
+  transform: translateY(-2px);
+}
+
+.p5-buy-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 0 8px rgba(224, 43, 12, 0.4);
+}
+
+@keyframes letter-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+}
+
+.p5-buy-btn .p5-texteffect,
+.p5-buy-btn .p5-texteffect-yellow {
+  animation: letter-pulse 3s ease-in-out infinite;
+  animation-delay: calc(var(--letter-index) * 0.2s); 
+}
+
+
+@media (max-width: 480px) {
+  .p5-buy-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+
+/*FOOTER*/
+footer{
+  background-color: var(--card);
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 1vh 0 0 0;
+  margin-top: 3rem;
+}
+
+
 

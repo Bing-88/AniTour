@@ -1,16 +1,16 @@
 package it.anitour.model;
 
-public class Stops {
+public class Stop {
     private int id;
     private int tourId;
     private String name;
     private String description;
     private int stopOrder;
 
-    public Stops() {
+    public Stop() {
     }
 
-    public Stops(int id, int tourId, String name, String description, int stopOrder) {
+    public Stop(int id, int tourId, String name, String description, int stopOrder) {
         this.id = id;
         this.tourId = tourId;
         this.name = name;

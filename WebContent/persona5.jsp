@@ -44,7 +44,7 @@
                             </li>
                             <li>
                                 <strong><span class="p5-texteffect-yellow">Y</span>ongen-<span class="p5-texteffect-yellow">J</span>aya – "<span class="p5-texteffect-yellow">I</span>l Quar<span class="p5-texteffect-yellow">t</span>iere Segr<span class="p5-texteffect-yellow">e</span>to"</strong><br>
-                                Visita il quartiere reale di Sangenjaya, che ha ispirato la zona di casa del protagonista e il Café Leblanc. Caffè artigianale incluso.
+                                <span class="p5-texteffect-white">V</span>isita il qua<span class="p5-texteffect-white">r</span>tiere re<span class="p5-texteffect-white">a</span>le di Sang<span class="p5-texteffect-white">e</span>njaya, c<span class="p5-texteffect-white">h</span>e ha i<span class="p5-texteffect-white">s</span>pir<span class="p5-texteffect-white">a</span>to <span class="p5-texteffect-white">l</span>a zona di casa del protagonista e il Café Leblanc. Caffè artigianale incluso.
                             </li>
                             <li>
                                 <strong><span class="p5-texteffect">S</span>hin<span class="p5-texteffect">j</span>uku – "T<span class="p5-texteffect">r</span>a <span class="p5-texteffect">L</span>uci e In<span class="p5-texteffect">g</span>a<span class="p5-texteffect">n</span>ni"</strong><br>

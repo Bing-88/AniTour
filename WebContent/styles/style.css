@@ -242,12 +242,13 @@ html, body {
   font-weight: 700;
   margin-top: 120px;
 }
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  align-items: stretch; /* aggiungi questa riga */
+  align-items: stretch;
 }
 
 .card {

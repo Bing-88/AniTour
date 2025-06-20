@@ -7,6 +7,7 @@
         <title>Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/AniTour/styles/style.css">
+        <link rel="stylesheet" href="/AniTour/styles/login.css">
         <link rel="icon" href="/AniTour/images/anitour.ico">
     </head>
     

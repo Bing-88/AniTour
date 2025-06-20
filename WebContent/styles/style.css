@@ -889,5 +889,28 @@ footer{
   margin-top: 3rem;
 }
 
+#footer-content {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 1000;
+  font-weight: 10%;
+}
+
+#footer-content img {
+  margin-top: 1vh;
+  height: 5vh;
+}
+
+#footer-login {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  margin-top: 0;
+  padding-bottom: 0;
+}
 
 

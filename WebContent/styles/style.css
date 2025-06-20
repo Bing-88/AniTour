@@ -171,67 +171,6 @@ html, body {
     display: block;
     align-self: flex-start;
   }
-
-/*LOGIN*/ 
-   * {
-      box-sizing: border-box;
-    }
-
-#login-style {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    padding: 20px;
-}
-
-    #login-box {
-      background-color: var(--card);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 360px;
-    }
-
-    #login-box h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
-
-    #login-box input[type="text"],
-    #login-box input[type="password"] {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 2px solid var(--accent);
-      border-radius: 1rem;
-      background-color: var(--background);
-      color: var(--text);
-      font-size: 1rem;
-      font-family: "Farro";
-    }
-
-    #login-box input::placeholder {
-      color: #6c6c6c;
-      transition: color 0.3 ease;
-    }
-
-    #login-box input:focus{
-      transition: color 0.3s ease;
-      outline: none;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      border-color: var(--accent);
-      transition: box-shadow 0.3s ease, border-color 0.3s ease;
-      background-color: var(--card);
-    }
-
-    #login-box p {
-      color: var(--text);
-      font-size: 90%;
-      text-align: center;
-    }
   
 /* TOURS */
 .titolo

@@ -78,7 +78,6 @@
             });
         </script>
         <script>
-            // Toggle mostra/nascondi password per entrambi i campi tramite l'occhio su password2
             document.getElementById("togglePasswordIcon2").addEventListener("click", function() {
                 const pwd1 = document.getElementById("password");
                 const pwd2 = document.getElementById("password2");

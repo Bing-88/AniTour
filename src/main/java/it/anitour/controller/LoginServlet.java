@@ -5,19 +5,20 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet implementation class Test
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/Test")
-public class Test extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Test() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,9 +34,21 @@ public class Test extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        // Qui verifica le credenziali (pseudo-codice)
+        if(/* credenziali valide */) {
+            String authToken = java.util.UUID.randomUUID().toString();
+            HttpSession session = request.getSession();
+            session.setAttribute("authToken", authToken);
+            // Redirigi o rispondi come preferisci
+            response.sendRedirect("home.jsp");
+        } else {
+            // Login fallito
+            response.sendRedirect("login.jsp?error=1");
+        }
+    }
 
 }

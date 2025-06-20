@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -46,6 +46,10 @@
                             <br>
                             <p>Hai già un account?</p>
                             <button type="button" class="btn1" onclick="window.location.href='/AniTour/login.jsp'">Accedi</button>
+                            <%
+                                String authToken = (String) session.getAttribute("authToken");
+                            %>
+                            <input type="hidden" name="authToken" value="<%= authToken != null ? authToken : "" %>">
                         </form>
                     </div>
             </div>
@@ -98,7 +102,7 @@
             });
         </script>
 
-        <
+        
         <footer id="footer-login">
             <%@ include file="footer.jsp" %>
         </footer>

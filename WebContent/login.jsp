@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -22,6 +22,10 @@
                 <div id="login-box">
                     <h2>Login</h2>
                         <form action="LoginServlet" method="post" id="loginForm">
+                            <%
+                                String authToken = (String) session.getAttribute("authToken");
+                            %>
+                            <input type="hidden" name="authToken" value="<%= authToken != null ? authToken : "" %>">
                             <input type="text" id="username" placeholder="Nome utente" name="username" required>
                             <div style="position:relative;">
                                 <input type="password" id="password" placeholder="Password" name="password" required style="padding-right: 2.2rem;">

@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class SignupServlet
  */
-@WebServlet("/SignupServlet")
+
 public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -59,6 +59,7 @@ public class SignupServlet extends HttpServlet {
             dao.insertUser(user);
             response.sendRedirect("login.jsp?registered=1");
         } catch (Exception e) {
+            e.printStackTrace(); // AGGIUNGI QUESTA RIGA
             response.sendRedirect("signup.jsp?error=server");
         }
     }

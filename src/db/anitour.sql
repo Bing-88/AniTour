@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    type ENUM('admin', 'user') NOT NULL DEFAULT 'user',
+    type ENUM('admin', 'user') NOT NULL DEFAULT 'user'
 );
 
 CREATE TABLE IF NOT EXISTS tours (
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS tours (
     price DECIMAL(10, 2) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    image_path VARCHAR(255),
+    image_path VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS stops (
@@ -35,5 +35,5 @@ CREATE TABLE IF NOT EXISTS bookings (
     price DECIMAL(10, 2) NOT NULL,
     booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE,
+    FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE
 );

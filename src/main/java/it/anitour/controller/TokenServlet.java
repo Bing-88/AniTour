@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Base64;
 
-@WebServlet("/TokenServlet")
+
 public class TokenServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -55,8 +55,3 @@ public class TokenServlet extends HttpServlet {
         // Puoi anche restituirlo come JSON se usi AJAX
     }
 }
-
-<%
-    String authToken = (String) session.getAttribute("authToken");
-%>
-<input type="hidden" name="authToken" value="<%= authToken != null ? authToken : "" %>">

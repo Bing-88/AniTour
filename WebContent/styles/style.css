@@ -535,7 +535,73 @@ html, body {
   transform: skewX(15deg);
   font-style: italic; 
 }
+.p5-texteffect-white
+{
+  color:#000;
+  background-color: #e9f6f9;
+  display: inline-block;
+  transform: skewX(-15deg); 
+  padding: 2px 7px;
+  margin: 0 1px;
+  border-radius: 0;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    95% 100%,
+    5% 100%
+  );
+  position: relative;
+  vertical-align: baseline;
+  box-shadow: none; 
+  text-shadow: none;
+}
+.p5-texteffect-white::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: skewX(15deg);
+  font-style: italic; 
+}
+.p5-texteffect-yellow
+{
+  color: #000;
+  background-color: #F6EB13;
+  display: inline-block;
+  transform: skewX(-15deg); 
+  padding: 2px 7px;
+  margin: 0 1px;
+  border-radius: 0;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    95% 100%,
+    5% 100%
+  );
+  position: relative;
+  vertical-align: baseline;
+  box-shadow: none; 
+  text-shadow: none;
+}
 
+.p5-texteffect-yellow::before {
+  content: ""; /* Modificato da attr(data-text) a stringa vuota */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: skewX(15deg);
+  font-style: italic; 
+}
 /*FOOTER*/
 footer{
   background-color: var(--card);
@@ -606,5 +672,68 @@ body.bg .cardp5 {
 body.bg footer.footerp5 {
   flex-shrink: 0 !important; /* Impedisce al footer di restringersi */
   margin-top: auto !important; /* Spinge il footer verso il basso */
+}
+
+/* Stile per gli elementi dell'elenco nella card Persona 5 */
+.cardp5 ol {
+  list-style-type: none;
+  padding: 0;
+  counter-reset: persona5-counter;
+}
+
+.cardp5 ol li {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1.2rem 1.5rem 1.2rem 3rem;
+  background-color: rgba(10, 10, 10, 0.7);
+  border-left: 4px solid #E02B0C;
+  box-shadow: 0 2px 10px rgba(224, 43, 12, 0.3);
+  counter-increment: persona5-counter;
+  border-radius: 0 3px 3px 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cardp5 ol li:before {
+  content: counter(persona5-counter);
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #E02B0C;
+  color: #FFF;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(224, 43, 12, 0.6);
+}
+
+.cardp5 ol li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(224, 43, 12, 0.5);
+}
+
+.cardp5 ol li strong {
+  color: #E02B0C;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.cardp5 ol li:nth-child(even) {
+  border-left: 4px solid #F6EB13;
+}
+
+.cardp5 ol li:nth-child(even):before {
+  background-color: #F6EB13;
+  color: #000;
+}
+
+.cardp5 ol li:nth-child(even) strong {
+  color: #F6EB13;
 }
 

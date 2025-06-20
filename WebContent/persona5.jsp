@@ -39,27 +39,27 @@
                     <div>
                         <ol>
                             <li>
-                                <strong>Shibuya Crossing & Station – "La Porta del Metaverso"</strong><br>
-                                Dove tutto ha inizio: esplora il famoso incrocio, la statua di Hachikō, e l'area intorno all'iconica stazione, proprio come i protagonisti.
+                                <strong><span class="p5-texteffect">S</span>hibuya Cro<span class="p5-texteffect">s</span>sing & Sta<span class="p5-texteffect">t</span>ion – "La Po<span class="p5-texteffect">r</span>ta del Meta<span class="p5-texteffect">v</span>erso"</strong><br>
+                                <span class="p5-texteffect-white">D</span>ove tutto ha in<span class="p5-texteffect-white">i</span>zio: esplora il fa<span class="p5-texteffect-white">m</span>oso incrocio, la st<span class="p5-texteffect-white">a</span>tua di Hac<span class="p5-texteffect-white">h</span>ikō, e l'area i<span class="p5-texteffect-white">n</span>torno all'ic<span class="p5-texteffect-white">o</span>nica sta<span class="p5-texteffect-white">z</span>ione, pro<span class="p5-texteffect-white">p</span>rio co<span class="p5-texteffect-white">m</span>e i prot<span class="p5-texteffect-white">a</span>gon<span class="p5-texteffect-white">s</span>ti.
                             </li>
                             <li>
-                                <strong>Yongen-Jaya – "Il Quartiere Segreto"</strong><br>
+                                <strong><span class="p5-texteffect-yellow">Y</span>ongen-<span class="p5-texteffect-yellow">J</span>aya – "<span class="p5-texteffect-yellow">I</span>l Quar<span class="p5-texteffect-yellow">t</span>iere Segr<span class="p5-texteffect-yellow">e</span>to"</strong><br>
                                 Visita il quartiere reale di Sangenjaya, che ha ispirato la zona di casa del protagonista e il Café Leblanc. Caffè artigianale incluso.
                             </li>
                             <li>
-                                <strong>Shinjuku – "Tra Luci e Inganni"</strong><br>
+                                <strong><span class="p5-texteffect">S</span>hin<span class="p5-texteffect">j</span>uku – "T<span class="p5-texteffect">r</span>a <span class="p5-texteffect">L</span>uci e In<span class="p5-texteffect">g</span>a<span class="p5-texteffect">n</span>ni"</strong><br>
                                 Passeggiata tra le luci al neon, il distretto a luci rosse e i vicoli pieni di segreti. Cena tematica in un locale ispirato al Jazz Jin.
                             </li>
                             <li>
-                                <strong>Akihabara – "Maschere e Ribellione"</strong><br>
+                                <strong>A<span class="p5-texteffect-yellow">k</span>ihabara – "Mas<span class="p5-texteffect-yellow">c</span>here <span class="p5-texteffect-yellow">e</span> Ribe<span class="p5-texteffect-yellow">l</span>lione"</strong><br>
                                 Tappa otaku per eccellenza: gadget, cosplay e un mini evento Phantom Thieves Fan Club con quiz e photo booth.
                             </li>
                             <li>
-                                <strong>Mitaka – "I Sogni oltre il Velo"</strong><br>
+                                <strong><span class="p5-texteffect">M</span>itaka – "I So<span class="p5-texteffect">g</span>ni ol<span class="p5-texteffect">t</span>re il V<span class="p5-texteffect">e</span>lo"</strong><br>
                                 Gita al <em>Museo Ghibli</em>, tra sogno e realtà: una deviazione simbolica, perfetta per evocare l'atmosfera alternativa del Metaverso.
                             </li>
                             <li>
-                                <strong>Tokyo Metropolitan Government Building – "Il Palazzo del Potere"</strong><br>
+                                <strong><span class="p5-texteffect-yellow">T</span>okyo Metr<span class="p5-texteffect-yellow">o</span>poli<span class="p5-texteffect-yellow">t</span>an Gove<span class="p5-texteffect-yellow">r</span>nmen<span class="p5-texteffect-yellow">t</span> Bui<span class="p5-texteffect-yellow">l</span>ding – "I<span class="p5-texteffect-yellow">l</span> Pala<span class="p5-texteffect-yellow">z</span>zo d<span class="p5-texteffect-yellow">e</span>l Po<span class="p5-texteffect-yellow">t</span>ere"</strong><br>
                                 Salita panoramica con vista su Tokyo: simbolo della verticalità e corruzione dei "Palazzi" mentali. Briefing finale in stile Ladri Fantasma.
                             </li>
                         </ol>

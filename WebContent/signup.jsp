@@ -21,7 +21,7 @@
             <div id="login-style">
                 <div id="login-box">
                     <h2>Registrazione</h2>
-                        <form>
+                        <form action="SignupServlet" method="post">
                             <input type="text" id="username" placeholder="Nome utente" name="username" required>
                             <input type="email" id="email" placeholder="Email" name="email" required>
                             <div style="position:relative;">

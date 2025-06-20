@@ -21,7 +21,7 @@
             <div id="login-style">
                 <div id="login-box">
                     <h2>Login</h2>
-                        <form>
+                        <form action="LoginServlet" method="post" id="loginForm">
                             <input type="text" id="username" placeholder="Nome utente" name="username" required>
                             <div style="position:relative;">
                                 <input type="password" id="password" placeholder="Password" name="password" required style="padding-right: 2.2rem;">

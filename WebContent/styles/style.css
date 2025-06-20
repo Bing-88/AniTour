@@ -16,6 +16,66 @@ body{
     color: var(--text);
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  margin-top: 3rem;
+  padding-top : 80px;
+}
+
+@media (min-width: 601px) {
+  .main-content {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding-bottom: 110px;
+    padding-top: 80px;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.btn1 {
+  color: var(--background);
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+  font-family: "Farro";
+}
+
+
+.btn1:hover {
+  background-color: var(--primary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
 @font-face {
   font-family: "Farro";
   src: url("/AniTour/styles/fonts/Farro-Light.ttf");
@@ -41,137 +101,75 @@ body{
 }
 
 /*TOP PAGINA*/
-   .fixed-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 10%;
-      background-color: var(--card);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-      padding: 1px 20px;
-      overflow: visible;
-    }
-
-    .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-    }
-
-    .header-left,
-    .header-right {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
-
-    .header-center {
-      flex: 0 1 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .header-left {
-      justify-content: flex-start;
-    }
-
-    .header-right {
-      justify-content: flex-end;
-    }
-
-    .img-center {
-      height: 100px;
-      width: auto;
-      max-width: 100%;
-    }
-  .login-icon {
-  height: 32px;
-  width: 32px;
-  object-fit: cover;
-  margin-right: auto;
-  margin-left: 0;
-  cursor: pointer;
-  display: block;
-  align-self: flex-start;
-}
-
-/*LOGIN*/ 
-   * {
-      box-sizing: border-box;
-    }
-
-    #login-style {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      color: var(--text);
-      padding: 20px;
-    }
-
-    #login-box {
-      background-color: var(--card);
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 360px; /* limite massimo per desktop */
-    }
-
-    #login-box h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-    }
-
-    #login-box input[type="text"],
-    #login-box input[type="password"] {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 2px solid var(--primary);
-      border-radius: 1rem;
-      background-color: var(--background);
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    #login-box input::placeholder {
-      color: #6c6c6c;
-;
-    }
-
-    #login-box button {
-      width: 100%;
-      padding: 0.75rem;
-      background-color: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 1rem;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: background-color 0.2s ease-in-out;
-    }
-
-    #login-box button:hover {
-      background-color: var(--primary);
-    }
-
-    #login-box p {
-      color: var(--text);
-      font-size: 90%;
-      text-align: center;
-    }
-
   #logo-full{
     width:auto;
-    height: 3vw;
+    height: 40%;
+    max-height: 50px;
+  }
+
+  #fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: var(--card);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 0vh 1vh;
+    margin-bottom: 3rem;
+    overflow: visible;
+  }
+
+  @media (max-width: 600px) {
+    #fixed-header {
+      height: 56px; /* consigliato per mobile */
+    }
+  }
+
+  #header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  #header-left,
+  #header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  #header-center {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #header-left {
+    justify-content: flex-start;
+  }
+
+  #header-right {
+    justify-content: flex-end;
+  }
+
+  .img-center {
+    height: 100px;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .login-icon {
+    width: 32px;
+    object-fit: cover;
+    margin-right: auto;
+    margin-left: 0;
+    cursor: pointer;
+    display: block;
+    align-self: flex-start;
   }
   
 /* TOURS */
@@ -183,12 +181,13 @@ body{
   font-weight: 700;
   margin-top: 120px;
 }
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-  align-items: stretch; /* aggiungi questa riga */
+  align-items: stretch;
 }
 
 .card {
@@ -297,15 +296,6 @@ body{
   margin: 0;
 }
 
-.main-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-}
-
 .title-wrapper {
   display: inline;
   white-space: nowrap;
@@ -343,7 +333,7 @@ body{
   width: 100%;
   height: 100%;
   border-radius: 5vh;
-  background-color: var(--card);
+  background-color: transparent;
   border: 2px solid var(--primary);
   padding: 1rem 2.5rem 1rem 2rem; /* spazio extra a destra per l’icona */
   font-size: 1.25rem;
@@ -363,6 +353,7 @@ body{
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   border-color: var(--accent);
   color: var(--text);
+  background-color: var(--card);
 }
 
 .search-bar:focus::placeholder {
@@ -387,31 +378,35 @@ body{
   opacity: 1;
 }
 
+/*FOOTER*/
+footer{
+  background-color: var(--card);
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 1vh 0 0 0;
+  margin-top: 3rem;
+}
 
-/*TOP PAGINA*/
+#footer-content {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 1000;
+  font-weight: 10%;
+}
 
-    .fixed-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 10%;
-      background-color: var(--card);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-      padding: 1px 20px;
-      overflow: visible;
-    }
+#footer-content img {
+  margin-top: 1vh;
+  height: 5vh;
+}
 
-    .header-content {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .img-center {
-      height: 105px;
-      width: auto;
-    }
+#footer-login {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  margin-top: 0;
+  padding-bottom: 0;
+}

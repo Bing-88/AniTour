@@ -20,20 +20,32 @@
         <div class="main-content">
             <div id="login-style">
                 <div id="login-box">
-                    <h2>Login</h2>
+                    <h2>Registrazione</h2>
                         <form>
                             <input type="text" id="username" placeholder="Nome utente" name="username" required>
                             <input type="email" id="email" placeholder="Email" name="email" required>
-                            <input type="password" id="password" placeholder="Password" name="password" required>
+                            <div style="position:relative;">
+                                <input type="password" id="password" placeholder="Password" name="password" required style="padding-right: 2.2rem;">
+                            </div>
+                            <div style="position:relative;">
+                                <input type="password" id="password2" placeholder="Ripeti Password" name="password2" required style="padding-right: 2.2rem;">
+                                <span id="togglePasswordIcon2" style="position: absolute; right: 10px; top: 42%; transform: translateY(-50%); cursor: pointer;">
+                                    <svg id="eyeOpen2" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" style="vertical-align: middle;">
+                                        <path stroke="#888" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/>
+                                        <circle cx="12" cy="12" r="3" stroke="#888" stroke-width="2"/>
+                                    </svg>
+                                    <svg id="eyeClosed2" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" style="display:none;vertical-align: middle;">
+                                        <path stroke="#888" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/>
+                                        <path stroke="#888" stroke-width="2" d="M4 4l16 16"/>
+                                    </svg>
+                                </span>
+                            </div>
                             <div id="capsWarning" style="display:none; color: violet; font-weight: 700;">Caps Lock attivo!</div>
-                            <label>Mostra password
-                                <input type="checkbox" id="togglePassword">
-                            </label>
                             <br><br>
-                            <button type="submit" class="btn1">Accedi</button>
-                            <br>
-                            <p>Non hai ancora un account?</p>
                             <button type="submit" class="btn1">Registrati</button>
+                            <br>
+                            <p>Hai già un account?</p>
+                            <button type="button" class="btn1" onclick="window.location.href='/AniTour/login.jsp'">Accedi</button>
                         </form>
                     </div>
             </div>
@@ -54,18 +66,40 @@
             });
         </script>
         <script>
-            document.getElementById("togglePassword").addEventListener("change", function() {
-            const pwd = document.getElementById("password");
-            pwd.type = this.checked ? "text" : "password";
+            document.getElementById("togglePasswordIcon1").addEventListener("click", function() {
+                const pwd = document.getElementById("password");
+                const eyeOpen = document.getElementById("eyeOpen1");
+                const eyeClosed = document.getElementById("eyeClosed1");
+                const isPassword = pwd.getAttribute("type") === "password";
+
+                pwd.setAttribute("type", isPassword ? "text" : "password");
+                eyeOpen.style.display = isPassword ? "none" : "inline";
+                eyeClosed.style.display = isPassword ? "inline" : "none";
             });
         </script>
+        <script>
+            // Toggle mostra/nascondi password per entrambi i campi tramite l'occhio su password2
+            document.getElementById("togglePasswordIcon2").addEventListener("click", function() {
+                const pwd1 = document.getElementById("password");
+                const pwd2 = document.getElementById("password2");
+                const eyeOpen2 = document.getElementById("eyeOpen2");
+                const eyeClosed2 = document.getElementById("eyeClosed2");
+                const isPassword = pwd2.type === "password";
 
+                pwd1.type = isPassword ? "text" : "password";
+                pwd2.type = isPassword ? "text" : "password";
+                eyeOpen2.style.display = isPassword ? "none" : "inline";
+                eyeClosed2.style.display = isPassword ? "inline" : "none";
+            });
+        </script>
         <script>
             document.getElementById("password").addEventListener("keyup", function(e) {
             const warning = document.getElementById("capsWarning");
             warning.style.display = e.getModifierState("CapsLock") ? "block" : "none";
             });
         </script>
+
+        <
         <footer id="footer-login">
             <%@ include file="footer.jsp" %>
         </footer>

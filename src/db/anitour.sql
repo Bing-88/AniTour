@@ -94,7 +94,7 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path) VALUES
 ('Outer Wilds', '
-                Esplora l\'universo, scopri antiche civiltà e risolvi il mistero del sistema solare.<br>
+                Esplora l\'universo, scopri antiche civilt&agrave; e risolvi il mistero del sistema solare.<br>
                 Un viaggio tra stelle e pianeti, tra enigmi e scoperte.<br>
                 Questo e molto altro, nel tour a tema Outer Wilds!<br>
 ', 40000099.99, '2025-07-01', '2025-07-15', '/AniTour/images/outerwilds.jpg');

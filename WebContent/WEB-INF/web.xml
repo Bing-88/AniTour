@@ -32,7 +32,7 @@
   </servlet>
   <servlet-mapping>
   <servlet-name>TourServlet</servlet-name>
-  <url-pattern>/TourServlet</url-pattern>
+  <url-pattern>/tours</url-pattern>
   </servlet-mapping>
   
 </web-app>

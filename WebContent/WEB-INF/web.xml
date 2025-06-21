@@ -24,4 +24,15 @@
     <servlet-name>SignupServlet</servlet-name>
     <url-pattern>/SignupServlet</url-pattern>
   </servlet-mapping>
+
+  <!-- Tour Servlet-->
+  <servlet>
+  <servlet-name>TourServlet</servlet-name>
+  <servlet-class>it.anitour.controller.TourServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>TourServlet</servlet-name>
+  <url-pattern>/TourServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

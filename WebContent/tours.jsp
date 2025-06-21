@@ -20,6 +20,12 @@
               <h1 class="title1" style="color: var(--primary);">TOUR DISPONIBILI</h1>
               <div class="card-container">
                 <%
+                    //per eseguire la servlet quando si va in questa pagina (se non è già stata eseguita)
+                    if (request.getAttribute("tours") == null) {
+                        response.sendRedirect("TourServlet");
+                        return;
+                    }
+
                     List<Tour> tours = (List<Tour>) request.getAttribute("tours");
                     if (tours == null || tours.isEmpty()) {
                         out.println("<p class='no-tours'>Nessun tour disponibile al momento.</p>");
@@ -42,7 +48,7 @@
                     }
                 %>
               </div>
-
+            </div>
         <footer>
             <%@ include file="footer.jsp" %>
         </footer>

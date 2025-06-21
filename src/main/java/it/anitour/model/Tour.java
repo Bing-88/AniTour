@@ -1,14 +1,17 @@
 package it.anitour.model;
+import java.sql.Date;
+import java.util.List;
 
 public class Tour {
     private int id;
     private String name;
     private String description;
     private double price;
-    private String startDate;
-    private String endDate;
+    private Date startDate;
+    private Date endDate;
     private String imagePath;
-
+    private List<Stop> stops;
+    
     // Getter e Setter per id
     public int getId() {
         return id;
@@ -42,18 +45,18 @@ public class Tour {
     }
 
     // Getter e Setter per startDate
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
     // Getter e Setter per endDate
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -63,5 +66,13 @@ public class Tour {
     }
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    // Getter e Setter per stops
+    public List<Stop> getStops() {
+        return stops;
+    }
+    public void setStops(List<Stop> stops) {
+        this.stops = stops;
     }
 }

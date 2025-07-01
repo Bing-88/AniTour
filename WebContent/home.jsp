@@ -5,7 +5,9 @@
         <meta charset="utf-8">
         <title>AniTour</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="AniTour is an e-commerce service that provides nerd-themed tours all around the world!">
         <link rel="stylesheet" href="/AniTour/styles/style.css">
+        <link rel="stylesheet" href="/AniTour/styles/home.css">
         <link rel="icon" href="/AniTour/images/anitour.ico">
     </head>
     <body>
@@ -14,28 +16,38 @@
                 <%@ include file="header.jsp" %>
             </header>
 
-            <div class="main-content" id="main-content">
+            <main class="main-content" id="main-content">
                 <div class="title-wrapper">
-                    <p class="title1">Travel with your</p>
-                    <p class="title1 highlighted-text">FANTASY</p>
+                    <h1 class="title1">Travel with your</h1>
+                    <h1 class="title1 highlighted-text">FANTASY</h1>
                 </div>
-                <form action="" method="POST" class="search-form">
+                
+                <form action="/AniTour/search" method="GET" class="search-form">
                     <div class="search-labels">
-                    <p class="search-element">Dove</p>
-                    <p class="search-element">Tema</p>
-                    <p class="search-element">Date</p>
-                    <p class="search-element">Budget</p>
+                        <span class="search-element">Dove</span>
+                        <span class="search-element">Tema</span>
+                        <span class="search-element">Date</span>
+                        <span class="search-element">Budget</span>
                     </div>
                     <div class="search-bar-wrapper">
-                        <input name="search-bar" class="search-bar" type="text" placeholder="Dove ti porta la tua fantasia?">
-                        <img src="/AniTour/images/search-icon.png" alt="Search" class="search-icon">
+                        <input 
+                            name="search-bar" 
+                            class="search-bar" 
+                            type="text" 
+                            placeholder="Dove ti porta la tua fantasia?">
+                        <img src="/AniTour/images/search-icon.png" alt="" class="search-icon">
                     </div>
                 </form>
+                <div class="tours-button-wrapper">
+                    <button type="button" class="btn1" onclick="window.location.href='/AniTour/tours'">
+                        Esplora tutti i tour
+                    </button>
                 </div>
-            </div>
+            </main>
 
-        <footer>
-            <%@ include file="footer.jsp" %>
-        </footer>
+            <footer>
+                <%@ include file="footer.jsp" %>
+            </footer>
+        </div>
     </body>
 </html>

@@ -8,36 +8,27 @@
     --card: #e9e1e3;
 }
 
-/*MAIN*/
-body{
-    font-family: "Farro";
-    background-color: var(--background);
-    font-weight: 400;
-    color: var(--text);
+/*GLOBALE*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.main-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex: 1;
-  margin-top: 3rem;
-  padding-top : 80px;
+/*ANIMAZIONI*/
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
-@media (min-width: 601px) {
-  .main-content {
-    padding-top: 100px;
-    padding-bottom: 100px;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-}
-
-@media (max-width: 600px) {
-  .main-content {
-    padding-bottom: 110px;
-    padding-top: 80px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -47,6 +38,42 @@ html, body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+}
+
+body {
+    font-family: "Farro", sans-serif;
+    background-color: var(--background);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.6;
+}
+/*Scrollbar*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(209, 66, 65, 0.3);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(209, 66, 65, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: rgba(209, 66, 65, 0.7);
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(209, 66, 65, 0.3) transparent;
 }
 
 .page-container {
@@ -55,6 +82,26 @@ html, body {
     min-height: 100vh;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  padding-top: 100px;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding-top: 70px;
+  }
+}
+
+/* BUTTONS */
 .btn1 {
   color: var(--background);
   width: 100%;
@@ -65,340 +112,160 @@ html, body {
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
-  transition: background-color 0.2s ease-in-out;
-  font-family: "Farro";
+  transition: all 0.3s ease;
+  font-family: "Farro", sans-serif;
 }
-
 
 .btn1:hover {
   background-color: var(--primary);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transform: translateY(-2px);
 }
 
+.btn1:active {
+  transform: translateY(0);
+}
+
+/* FONTS */
 @font-face {
   font-family: "Farro";
   src: url("/AniTour/styles/fonts/Farro-Light.ttf");
   font-weight: 300;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Farro";
   src: url("/AniTour/styles/fonts/Farro-Regular.ttf");
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Farro";
   src: url("/AniTour/styles/fonts/Farro-Medium.ttf");
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Farro";
   src: url("/AniTour/styles/fonts/Farro-Bold.ttf");
   font-weight: 700;
+  font-display: swap;
 }
 
-/*TOP PAGINA*/
-  #logo-full{
-    width:auto;
-    height: 40%;
-    max-height: 50px;
-  }
-
-  #fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background-color: var(--card);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-    padding: 0vh 1vh;
-    margin-bottom: 3rem;
-    overflow: visible;
-  }
-
-  @media (max-width: 600px) {
-    #fixed-header {
-      height: 56px; /* consigliato per mobile */
-    }
-  }
-
-  #header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-  }
-
-  #header-left,
-  #header-right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-  }
-
-  #header-center {
-    flex: 0 1 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #header-left {
-    justify-content: flex-start;
-  }
-
-  #header-right {
-    justify-content: flex-end;
-  }
-
-  .img-center {
-    height: 100px;
-    width: auto;
-    max-width: 100%;
-  }
-
-  .login-icon {
-    width: 32px;
-    object-fit: cover;
-    margin-right: auto;
-    margin-left: 0;
-    cursor: pointer;
-    display: block;
-    align-self: flex-start;
-  }
-  
-/* TOURS */
-.titolo
-{
-  text-align: center;
-  color: var(--accent);
-  font-size: 2.7rem;
-  font-weight: 700;
-  margin-top: 120px;
-}
-
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  align-items: stretch;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--card);
-  border-radius: 1.25rem;
-  padding:  2rem 2rem 1rem 2rem;
-  width: 300px;
-  box-sizing: border-box;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;           /* aggiungi */
-  flex-direction: column;  /* aggiungi */
-  min-height: 480px;       /* aggiungi o regola il valore */
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-  z-index: 1;
-}
-
-.card-img {
+/* HEADER */
+#fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  object-fit: cover;
-  transition: transform 0.3s cubic-bezier(.4,2,.6,.8);
+  height: 80px;
+  background-color: var(--card);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 0 2rem;
+  backdrop-filter: blur(10px);
 }
 
-.card:hover .card-img {
-  transform: scale(1.08);
-  filter: brightness(1.08) saturate(1.2);
-}
-.card:hover .prezzo{
-  transform: scale(1.35); 
-  filter: brightness(1.2) saturate(1.2);
-
-}
-.card-title {
-  font-size: 1.75rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--primary);
+@media (max-width: 600px) {
+  #fixed-header {
+    height: 60px;
+    padding: 0 1rem;
+  }
 }
 
-.card-text {
-  font-size: 1rem;
+#header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.date
-{
-  color: var(--secondary);
-  font-weight: bold;
+
+#header-left,
+#header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
-.prezzo
-{
-  color: var(--primary);
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-top: auto;
-  margin-bottom: 0;
-  transition: transform 0.25s cubic-bezier(.4,2,.6,.8); /* più fluido */
-}
-.card-img-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(234, 140, 139, 0.4); 
-  opacity: 0;
+
+#header-center {
+  flex: 0 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  transition: opacity 0.3s;
-  border-radius: 1rem;
-  pointer-events: none;
 }
 
-.card:hover .card-img-overlay {
-  opacity: 1;
+#header-left {
+  justify-content: flex-start;
 }
 
-.card-link-wrapper {
-  text-decoration: none;
-  color: inherit;
-  display: inline-block;
+#header-right {
+  justify-content: flex-end;
 }
 
-.card-link-wrapper .card {
-  cursor: pointer;
-}
-
-/*HOME*/
-.highlighted-text{
-  color: var(--primary);
-}
-
-.title1{
-  display: block;
-  font-weight: 700;
-  font-size: 4rem;
-  margin: 0;
-}
-
-.title-wrapper {
-  display: inline;
-  white-space: nowrap;
-}
-
-
-.search-form {
-    flex-direction: column;
-    display: flex;
-    gap: 0.5rem;
-    
-}
-
-.search-labels {
-  margin-top: 1rem;
-  gap: 1rem;
-  text-align: left;
-  margin-left: 3%;
-}
-
-.search-element{
-  display: inline;
-  text-decoration: underline;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-
-.search-bar-wrapper {
-  position: relative;
-  width: 60vw;
-  height: 8vh;
-}
-
-.search-bar {
-  width: 100%;
-  height: 100%;
-  border-radius: 5vh;
-  background-color: transparent;
-  border: 2px solid var(--primary);
-  padding: 1rem 2.5rem 1rem 2rem; /* spazio extra a destra per l’icona */
-  font-size: 1.25rem;
-  font-family: "Farro";
-  font-weight: 500;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.search-bar::placeholder {
-  color: #6c6c6c;
-  transition: color 0.3s ease;
-  font-family: "Farro";
-}
-
-.search-bar:focus {
-  outline: none;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  border-color: var(--accent);
-  color: var(--text);
-  background-color: var(--card);
-}
-
-.search-bar:focus::placeholder {
-  color: transparent;
-}
-
-.search-icon {
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
-  color: var(--primary);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+#logo-full {
   width: auto;
-  height: 50%;
+  height: 50px;
+  max-height: 50px;
+  transition: transform 0.3s ease;
 }
 
-.search-bar:focus + .search-icon {
-  opacity: 1;
+#logo-full:hover {
+  transform: scale(1.05);
 }
 
-/*FOOTER*/
-footer{
+@media (max-width: 600px) {
+  #logo-full {
+    height: 40px;
+  }
+}
+
+.login-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  cursor: pointer;
+  display: block;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.login-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* FOOTER */
+footer {
   background-color: var(--card);
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 1vh 0 0 0;
-  margin-top: 3rem;
+  padding: 0.5rem 0;
+  margin-top: auto;
 }
 
 #footer-content {
   text-align: center;
   margin: 0;
-  padding: 0;
-  width: 100%;
-  z-index: 1000;
-  font-weight: 10%;
+  padding: 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#footer-content p {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.8rem;
+  color: var(--secondary);
 }
 
 #footer-content img {
-  margin-top: 1vh;
-  height: 5vh;
+  height: 25px;
+  width: auto;
+  transition: transform 0.3s ease;
 }
 
 #footer-login {
@@ -407,6 +274,11 @@ footer{
   bottom: 0;
   width: 100%;
   z-index: 1000;
-  margin-top: 0;
-  padding-bottom: 0;
+}
+
+.error-message {
+    color: var(--accent);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    margin-top: 0.5rem;
+    font-weight: 500;
 }

@@ -10,34 +10,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Servlet implementation class LoginServlet
- */
-
 public class LoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("/AniTour/login");
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -49,13 +34,17 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("authToken", authToken);
                 session.setAttribute("user", user);
-                response.sendRedirect("home.jsp");
+                
+                session.setAttribute("username", user.getUsername());
+                session.setAttribute("email", user.getEmail());
+                session.setAttribute("type", user.getType());
+                
+                response.sendRedirect("/AniTour/home");
             } else {
-                response.sendRedirect("login.jsp?error=1");
+                response.sendRedirect("/AniTour/login?error=1");
             }
         } catch (Exception e) {
-            response.sendRedirect("login.jsp?error=server");
+            response.sendRedirect("/AniTour/login?error=server");
         }
     }
-
 }

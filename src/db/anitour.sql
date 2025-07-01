@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS anitour;
+CREATE DATABASE IF NOT EXISTS anitour CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE anitour;
 
 CREATE TABLE IF NOT EXISTS users (
@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     type ENUM('admin', 'user') NOT NULL DEFAULT 'user'
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS tours (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS tours (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     image_path VARCHAR(255)
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS stops (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS stops (
     description TEXT,
     stop_order INT NOT NULL,
     FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -36,20 +36,20 @@ CREATE TABLE IF NOT EXISTS bookings (
     booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO users (username, password, email, type) VALUES
 ('admin', 'admin', 'admin@anitour.it', 'admin'),
 ('user', 'user', 'email@example.com', 'user');
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path) VALUES
-('Persona 5', '
+('Persona 5', "
                         Unisciti ai Ladri Fantasma e scopri il mondo di Persona 5!<br>
-                        Maschere calate. Cuori da rubare. Ribellione tra ombre e citt&agrave; lucenti.<br>
-                        Unisciti ai Ladri Fantasma, scopri la verit&agrave;.
-                        Infiltrati nei Palazzi dell&rsquo;ordinario, risveglia il tuo io!<br>
+                        Maschere calate. Cuori da rubare. Ribellione tra ombre e città lucenti.<br>
+                        Unisciti ai Ladri Fantasma, scopri la verità.
+                        Infiltrati nei Palazzi dell'ordinario, risveglia il tuo io!<br>
                         Questo e molto altro, nel tour a tema Persona 5!
-', 2039.49, '2025-05-01', '2025-05-15', '/AniTour/images/persona5.jpg');
+", 2039.49, '2025-05-01', '2025-05-15', '/AniTour/images/persona5.jpg');
 
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (1, 'Tokyo', 'Visita la capitale del Giappone, esplora i quartieri di Shibuya e Akihabara.', 1),
@@ -94,7 +94,7 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path) VALUES
 ('Outer Wilds', '
-                Esplora l\'universo, scopri antiche civilt&agrave; e risolvi il mistero del sistema solare.<br>
+                Esplora l\'universo, scopri antiche civiltà e risolvi il mistero del sistema solare.<br>
                 Un viaggio tra stelle e pianeti, tra enigmi e scoperte.<br>
                 Questo e molto altro, nel tour a tema Outer Wilds!<br>
 ', 40000099.99, '2025-07-01', '2025-07-15', '/AniTour/images/outerwilds.jpg');
@@ -115,3 +115,4 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (6, 'Islanda', 'Esplora l\'Islanda e scopri i luoghi iconici di Vinland Saga.', 1),
 (6, 'Villaggio di Thorfinn', 'Visita il villaggio e incontra i personaggi della saga.', 2),
 (6, 'Battaglia di Vinland', 'Partecipa alla battaglia e scopri il destino di Thorfinn.', 3);
+

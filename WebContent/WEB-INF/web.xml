@@ -2,37 +2,87 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
   <display-name>AniTour</display-name>
   <welcome-file-list>
-    <welcome-file>home.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 
-  <!-- Login Servlet -->
+  <!-- Home Servlet -->
+  <servlet>
+    <servlet-name>HomeServlet</servlet-name>
+    <servlet-class>it.anitour.controller.HomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomeServlet</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+
+  <!-- Login Page Servlet -->
+  <servlet>
+    <servlet-name>LoginPageServlet</servlet-name>
+    <servlet-class>it.anitour.controller.LoginPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginPageServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <!-- Login Action Servlet -->
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>it.anitour.controller.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
-    <url-pattern>/LoginServlet</url-pattern>
+    <url-pattern>/login-action</url-pattern>
   </servlet-mapping>
 
-  <!-- Signup Servlet -->
+  <!-- Signup Page Servlet -->
+  <servlet>
+    <servlet-name>SignupPageServlet</servlet-name>
+    <servlet-class>it.anitour.controller.SignupPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignupPageServlet</servlet-name>
+    <url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+
+  <!-- Signup Action Servlet -->
   <servlet>
     <servlet-name>SignupServlet</servlet-name>
     <servlet-class>it.anitour.controller.SignupServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>SignupServlet</servlet-name>
-    <url-pattern>/SignupServlet</url-pattern>
+    <url-pattern>/signup-action</url-pattern>
   </servlet-mapping>
 
-  <!-- Tour Servlet-->
+  <!-- Profile Servlet -->
   <servlet>
-  <servlet-name>TourServlet</servlet-name>
-  <servlet-class>it.anitour.controller.TourServlet</servlet-class>
+    <servlet-name>ProfileServlet</servlet-name>
+    <servlet-class>it.anitour.controller.ProfileServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  <servlet-name>TourServlet</servlet-name>
-  <url-pattern>/tours</url-pattern>
+    <servlet-name>ProfileServlet</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+
+  <!-- Tour Servlet -->
+  <servlet>
+    <servlet-name>TourServlet</servlet-name>
+    <servlet-class>it.anitour.controller.TourServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TourServlet</servlet-name>
+    <url-pattern>/tours</url-pattern>
+  </servlet-mapping>
+
+  <!-- Logout Servlet -->
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>it.anitour.controller.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   
 </web-app>

@@ -50,14 +50,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const endDateInput = document.getElementById('tourEndDate');
     
     if (startDateInput && endDateInput) {
+        // Creazione del messaggio di errore
+        const dateErrorElement = document.createElement('p');
+        dateErrorElement.className = 'error-message';
+        dateErrorElement.id = 'tourDateError';
+        if (endDateInput.parentNode) {
+            endDateInput.parentNode.appendChild(dateErrorElement);
+        }
+        
         endDateInput.addEventListener('change', function() {
             if (startDateInput.value && this.value) {
                 const startDate = new Date(startDateInput.value);
                 const endDate = new Date(this.value);
                 
                 if (endDate < startDate) {
-                    alert('La data di fine deve essere successiva alla data di inizio.');
                     this.value = '';
+                    dateErrorElement.textContent = 'La data di fine deve essere successiva alla data di inizio.';
+                } else {
+                    dateErrorElement.textContent = '';
                 }
             }
         });

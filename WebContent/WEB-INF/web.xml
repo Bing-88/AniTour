@@ -114,5 +114,25 @@
     <servlet-name>DeleteTourServlet</servlet-name>
     <url-pattern>/delete-tour</url-pattern>
   </servlet-mapping>
+
+  <!-- Delete User Servlet -->
+  <servlet>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>it.anitour.controller.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <url-pattern>/delete-user</url-pattern>
+  </servlet-mapping>
+
+  <!-- Update User Type Servlet -->
+  <servlet>
+    <servlet-name>UpdateUserTypeServlet</servlet-name>
+    <servlet-class>it.anitour.controller.UpdateUserTypeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUserTypeServlet</servlet-name>
+    <url-pattern>/update-user-type</url-pattern>
+  </servlet-mapping>
   
 </web-app>

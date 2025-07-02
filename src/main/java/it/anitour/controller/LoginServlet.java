@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("username", user.getUsername());
                 session.setAttribute("email", user.getEmail());
                 session.setAttribute("type", user.getType());
+                session.setAttribute("userId", user.getId());
                 
                 response.sendRedirect("/AniTour/home");
             } else {

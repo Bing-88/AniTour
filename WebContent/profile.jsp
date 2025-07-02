@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List, it.anitour.model.Tour, it.anitour.model.TourDAO" %>
+<%@ page import="java.util.List, it.anitour.model.Tour, it.anitour.model.TourDAO, it.anitour.model.User, it.anitour.model.UserDAO" %>
 <%
     // Controlla se la sessione è valida e contiene i dati necessari
     String username = (String) session.getAttribute("username");
     String email = (String) session.getAttribute("email");
     String type = (String) session.getAttribute("type");
+    Integer userId = (Integer) session.getAttribute("userId");
     if (username == null || email == null) {
         response.sendRedirect("/AniTour/login");
         return;
@@ -13,11 +14,16 @@
     
     // Se l'utente è admin
     List<Tour> tourList = null;
+    List<User> userList = null;
     if (isAdmin) {
         try {
             // recupero tutti i tour dal db
             TourDAO tourDAO = new TourDAO();
             tourList = tourDAO.findAll();
+            
+            // recupero tutti gli utenti dal db
+            UserDAO userDAO = new UserDAO();
+            userList = userDAO.findAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,6 +70,24 @@
                             Si è verificato un errore durante l'aggiunta del tour.
                         <% } else if (error.equals("delete_tour_failed")) { %>
                             Si è verificato un errore durante l'eliminazione del tour.
+                        <% } else if (error.equals("username_exists")) { %>
+                            Il nome utente è già in uso.
+                        <% } else if (error.equals("email_exists")) { %>
+                            L'email è già registrata.
+                        <% } else if (error.equals("create_user_failed")) { %>
+                            Si è verificato un errore durante la creazione dell'utente.
+                        <% } else if (error.equals("delete_user_failed")) { %>
+                            Si è verificato un errore durante l'eliminazione dell'utente.
+                        <% } else if (error.equals("update_user_failed")) { %>
+                            Si è verificato un errore durante l'aggiornamento dell'utente.
+                        <% } else if (error.equals("cannot_delete_self")) { %>
+                            Non puoi eliminare il tuo account.
+                        <% } else if (error.equals("cannot_modify_self")) { %>
+                            Non puoi modificare il tuo tipo di account.
+                        <% } else if (error.equals("invalid_user_id")) { %>
+                            ID utente non valido.
+                        <% } else if (error.equals("invalid_user_type")) { %>
+                            Tipo utente non valido.
                         <% } %>
                     </div>
                 <% } %>
@@ -74,6 +98,12 @@
                             Tour aggiunto con successo!
                         <% } else if (success.equals("tour_deleted")) { %>
                             Tour eliminato con successo!
+                        <% } else if (success.equals("user_created")) { %>
+                            Utente creato con successo!
+                        <% } else if (success.equals("user_deleted")) { %>
+                            Utente eliminato con successo!
+                        <% } else if (success.equals("user_updated")) { %>
+                            Utente aggiornato con successo!
                         <% } %>
                     </div>
                 <% } %>
@@ -164,6 +194,92 @@
                                 
                                 <button type="submit" class="btn-delete">Elimina Tour</button>
                             </form>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <h4 class="collapsible">Gestione Utenti <span class="collapse-icon">+</span></h4>
+                        <div class="collapsible-content">
+                            <% if (userList != null && !userList.isEmpty()) { %>
+                                <div class="users-table-container">
+                                    <table class="users-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                <th>Tipo</th>
+                                                <th>Azioni</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (User user : userList) { %>
+                                                <tr>
+                                                    <td><%= user.getId() %></td>
+                                                    <td><%= user.getUsername() %></td>
+                                                    <td><%= user.getEmail() %></td>
+                                                    <td><%= user.getType() %></td>
+                                                    <td class="actions-cell">
+                                                        <% if (user.getId() != userId) { %>
+                                                            <form action="/AniTour/update-user-type" method="post" class="inline-form">
+                                                                <input type="hidden" name="userId" value="<%= user.getId() %>">
+                                                                <select name="userType" class="user-type-select">
+                                                                    <option value="user" <%= "user".equals(user.getType()) ? "selected" : "" %>>User</option>
+                                                                    <option value="admin" <%= "admin".equals(user.getType()) ? "selected" : "" %>>Admin</option>
+                                                                </select>
+                                                                <button type="submit" class="btn-update">Salva</button>
+                                                            </form>
+                                                            <form action="/AniTour/delete-user" method="post" class="inline-form" onsubmit="return confirm('Sei sicuro di voler eliminare questo utente?');">
+                                                                <input type="hidden" name="userId" value="<%= user.getId() %>">
+                                                                <button type="submit" class="btn-delete-small">Elimina</button>
+                                                            </form>
+                                                        <% } else { %>
+                                                            <span class="current-user-label">Utente corrente</span>
+                                                        <% } %>
+                                                    </td>
+                                                </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% } else { %>
+                                <p class="no-data">Nessun utente disponibile.</p>
+                            <% } %>
+                            
+                            <div class="add-user-form">
+                                <h4>Aggiungi nuovo utente</h4>
+                                <form action="/AniTour/signup-action" method="post">
+                                    <div class="form-row">
+                                        <div class="form-group half">
+                                            <label for="newUsername">Username:</label>
+                                            <input type="text" id="newUsername" name="username" required>
+                                        </div>
+                                        
+                                        <div class="form-group half">
+                                            <label for="newEmail">Email:</label>
+                                            <input type="email" id="newEmail" name="email" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group half">
+                                            <label for="newPassword">Password:</label>
+                                            <input type="password" id="newPassword" name="password" required>
+                                        </div>
+                                        
+                                        <div class="form-group half">
+                                            <label for="newUserType">Tipo utente:</label>
+                                            <select id="newUserType" name="type" class="form-select">
+                                                <option value="user">User</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <input type="hidden" name="adminCreate" value="true">
+                                    <button type="submit" class="btn1">Crea Utente</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

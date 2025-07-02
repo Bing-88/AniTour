@@ -193,4 +193,103 @@ public class TourDAO {
             }
         }
     }
+
+    public List<Tour> searchByTheme(String theme) throws SQLException {
+        List<Tour> tours = new ArrayList<>();
+        String sql = "SELECT * FROM tours WHERE name LIKE ? OR description LIKE ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            String searchPattern = "%" + theme + "%";
+            ps.setString(1, searchPattern);
+            ps.setString(2, searchPattern);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Tour tour = new Tour();
+                    tour.setId(rs.getInt("id"));
+                    tour.setName(rs.getString("name"));
+                    tour.setDescription(rs.getString("description"));
+                    tour.setPrice(rs.getDouble("price"));
+                    tour.setStartDate(rs.getDate("start_date"));
+                    tour.setEndDate(rs.getDate("end_date"));
+                    tour.setImagePath(rs.getString("image_path"));
+                    tour.setSlug(rs.getString("slug"));
+                    tours.add(tour);
+                }
+            }
+        }
+        return tours;
+    }
+
+    public List<Tour> searchByDate(Date startDate, Date endDate) throws SQLException {
+        List<Tour> tours = new ArrayList<>();
+        String sql;
+        
+        if (startDate != null && endDate != null) {
+            // Cerca tour che iniziano tra startDate e endDate
+            sql = "SELECT * FROM tours WHERE start_date >= ? AND start_date <= ?";
+        } else if (startDate != null) {
+            // Cerca tour che iniziano dopo startDate
+            sql = "SELECT * FROM tours WHERE start_date >= ?";
+        } else if (endDate != null) {
+            // Cerca tour che iniziano prima di endDate
+            sql = "SELECT * FROM tours WHERE start_date <= ?";
+        } else {
+            // Nessuna data specificata, ritorna tutti i tour
+            return findAll();
+        }
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+        
+            if (startDate != null && endDate != null) {
+                ps.setDate(1, startDate);
+                ps.setDate(2, endDate);
+            } else if (startDate != null) {
+                ps.setDate(1, startDate);
+            } else if (endDate != null) {
+                ps.setDate(1, endDate);
+            }
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Tour tour = new Tour();
+                    tour.setId(rs.getInt("id"));
+                    tour.setName(rs.getString("name"));
+                    tour.setDescription(rs.getString("description"));
+                    tour.setPrice(rs.getDouble("price"));
+                    tour.setStartDate(rs.getDate("start_date"));
+                    tour.setEndDate(rs.getDate("end_date"));
+                    tour.setImagePath(rs.getString("image_path"));
+                    tour.setSlug(rs.getString("slug"));
+                    tours.add(tour);
+                }
+            }
+        }
+        return tours;
+    }
+
+    public List<Tour> searchByPrice(double minPrice, double maxPrice) throws SQLException {
+        List<Tour> tours = new ArrayList<>();
+        String sql = "SELECT * FROM tours WHERE price >= ? AND price <= ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setDouble(1, minPrice);
+            ps.setDouble(2, maxPrice);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Tour tour = new Tour();
+                    tour.setId(rs.getInt("id"));
+                    tour.setName(rs.getString("name"));
+                    tour.setDescription(rs.getString("description"));
+                    tour.setPrice(rs.getDouble("price"));
+                    tour.setStartDate(rs.getDate("start_date"));
+                    tour.setEndDate(rs.getDate("end_date"));
+                    tour.setImagePath(rs.getString("image_path"));
+                    tour.setSlug(rs.getString("slug"));
+                    tours.add(tour);
+                }
+            }
+        }
+        return tours;
+    }
 }

@@ -19,8 +19,46 @@
             </header>
 
             <div class="main-content" id="main-content">
-              <h1 class="title1" style="color: var(--primary);">TOUR DISPONIBILI</h1>
-              <div class="card-container">
+                <%
+                    String searchType = (String) request.getAttribute("searchType");
+                    if (searchType != null) {
+                        if (searchType.equals("theme")) {
+                            String searchQuery = (String) request.getAttribute("searchQuery");
+                %>
+                    <h1 class="title1" style="color: var(--primary);">RISULTATI RICERCA: "<%= searchQuery %>"</h1>
+                <% 
+                        } else if (searchType.equals("date")) {
+                            String startDate = (String) request.getAttribute("startDate");
+                            String endDate = (String) request.getAttribute("endDate");
+                %>
+                    <h1 class="title1" style="color: var(--primary);">TOUR PER DATE</h1>
+                    <p class="search-info">
+                        <% if (startDate != null && !startDate.isEmpty() && endDate != null && !endDate.isEmpty()) { %>
+                            Dal <%= startDate %> al <%= endDate %>
+                        <% } else if (startDate != null && !startDate.isEmpty()) { %>
+                            A partire dal <%= startDate %>
+                        <% } else if (endDate != null && !endDate.isEmpty()) { %>
+                            Fino al <%= endDate %>
+                        <% } %>
+                    </p>
+                <% 
+                        } else if (searchType.equals("budget")) {
+                            Double minPrice = (Double) request.getAttribute("minPrice");
+                            Double maxPrice = (Double) request.getAttribute("maxPrice");
+                            DecimalFormat currencyFormat = new DecimalFormat("#,##0.00");
+                %>
+                    <h1 class="title1" style="color: var(--primary);">TOUR PER BUDGET</h1>
+                    <p class="search-info">
+                        Da <%= currencyFormat.format(minPrice) %>€ a <%= currencyFormat.format(maxPrice) %>€
+                    </p>
+                <% 
+                        }
+                    } else {
+                %>
+                    <h1 class="title1" style="color: var(--primary);">TOUR DISPONIBILI</h1>
+                <% } %>
+                
+                <div class="card-container">
                 <%
                     //per eseguire la servlet quando si va in questa pagina (se non è già stata eseguita)
                     if (request.getAttribute("tours") == null) {
@@ -30,7 +68,7 @@
 
                     List<Tour> tours = (List<Tour>) request.getAttribute("tours");
                     if (tours == null || tours.isEmpty()) {
-                        out.println("<p class='no-tours'>Nessun tour disponibile al momento.</p>");
+                        out.println("<p class='no-tours'>Nessun tour disponibile per questa ricerca.</p>");
                     } else {
                         // Formattatori per date e prezzi
                         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -61,10 +99,16 @@
                         }
                     }
                 %>
-              </div>
+                </div>
+                
+                <div class="back-button">
+                    <button class="btn1" onclick="window.location.href='/AniTour/home'">Torna alla ricerca</button>
+                </div>
             </div>
-        <footer>
-            <%@ include file="footer.jsp" %>
-        </footer>
+            
+            <footer>
+                <%@ include file="footer.jsp" %>
+            </footer>
+        </div>
     </body>
 </html>

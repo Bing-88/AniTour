@@ -44,17 +44,19 @@
                             // Formattazione del prezzo
                             String priceFormatted = priceFormat.format(tour.getPrice());
                 %>
-                    <div class="card">
-                        <img class="card-img" src="<%= tour.getImagePath() %>" alt="<%= tour.getName() %>">
-                        <div class="card-title"><%= tour.getName() %></div>
-                        <div class="card-text">
-                            <%= tour.getDescription() %>
-                            <div class="date">
-                                Dal <%= startDateFormatted %> al <%= endDateFormatted %>
+                    <a href="/AniTour/tour/<%= tour.getSlug() %>">
+                        <div class="card">
+                            <img class="card-img" src="<%= tour.getImagePath() %>" alt="<%= tour.getName() %>">
+                            <div class="card-title"><%= tour.getName() %></div>
+                            <div class="card-text">
+                                <%= tour.getDescription() %>
+                                <div class="date">
+                                    Dal <%= startDateFormatted %> al <%= endDateFormatted %>
+                                </div>
                             </div>
+                            <div class="prezzo">da <%= priceFormatted %>&euro;</div>
                         </div>
-                        <div class="prezzo">da <%= priceFormatted %>&euro;</div>
-                    </div>
+                    </a>
                 <%
                         }
                     }

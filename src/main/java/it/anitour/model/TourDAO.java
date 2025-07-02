@@ -24,6 +24,7 @@ public class TourDAO {
                 tour.setStartDate(rs.getDate("start_date"));
                 tour.setEndDate(rs.getDate("end_date"));
                 tour.setImagePath(rs.getString("image_path"));
+                tour.setSlug(rs.getString("slug"));
                 tours.add(tour);
             }
         }
@@ -53,7 +54,19 @@ public class TourDAO {
     }
 
     public void insert(Tour tour) throws SQLException {
-        String sql = "INSERT INTO tours (name, description, price, start_date, end_date, image_path) VALUES (?, ?, ?, ?, ?, ?)";
+        // Genera automaticamente lo slug dal nome del tour
+        String slug = generateSlug(tour.getName());
+        
+        // Possono esistere più tour con lo stesso nome, quindi per rendere lo slug unico, ci aggiungo un numero alla fine
+        int counter = 1;
+        String baseSlug = slug;
+        while (slugExists(slug)) {
+            slug = baseSlug + "-" + counter++;
+        }
+        
+        tour.setSlug(slug);
+        
+        String sql = "INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, tour.getName());
@@ -62,6 +75,7 @@ public class TourDAO {
             ps.setDate(4, tour.getStartDate());
             ps.setDate(5, tour.getEndDate());
             ps.setString(6, tour.getImagePath());
+            ps.setString(7, tour.getSlug());
             ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 if (rs.next()) {
@@ -95,24 +109,88 @@ public class TourDAO {
         }
     }
 
-    public List<Stop> findStopsByTourId(int tourId) throws SQLException {
-        List<Stop> stops = new ArrayList<>();
+    public Tour findBySlug(String slug) throws SQLException {
+        String sql = "SELECT * FROM tours WHERE slug = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, slug);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Tour tour = new Tour();
+                tour.setId(rs.getInt("id"));
+                tour.setName(rs.getString("name"));
+                tour.setDescription(rs.getString("description"));
+                tour.setPrice(rs.getDouble("price"));
+                tour.setStartDate(rs.getDate("start_date"));
+                tour.setEndDate(rs.getDate("end_date"));
+                tour.setImagePath(rs.getString("image_path"));
+                tour.setSlug(rs.getString("slug"));
+
+                // Carica anche le tappe del tour
+                loadStopsForTour(tour);
+
+                return tour;
+            }
+        }
+        return null;
+    }
+
+    private void loadStopsForTour(Tour tour) throws SQLException {
         String sql = "SELECT * FROM stops WHERE tour_id = ? ORDER BY stop_order";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, tourId);
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    Stop stop = new Stop();
-                    stop.setId(rs.getInt("id"));
-                    stop.setTourId(rs.getInt("tour_id"));
-                    stop.setName(rs.getString("name"));
-                    stop.setDescription(rs.getString("description"));
-                    stop.setStopOrder(rs.getInt("stop_order"));
-                    stops.add(stop);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, tour.getId());
+            ResultSet rs = stmt.executeQuery();
+            List<Stop> stops = new ArrayList<>();
+
+            while (rs.next()) {
+                Stop stop = new Stop();
+                stop.setId(rs.getInt("id"));
+                stop.setTourId(rs.getInt("tour_id"));
+                stop.setName(rs.getString("name"));
+                stop.setDescription(rs.getString("description"));
+                stop.setStopOrder(rs.getInt("stop_order"));
+                stops.add(stop);
+            }
+
+            tour.setStops(stops);
+        }
+    }
+
+    private String generateSlug(String name) {
+        return name.toLowerCase()
+            .replaceAll("[^\\w\\s-]", "") // Rimuovi caratteri speciali
+            .replaceAll("[\\s_-]+", "-")  // Sostituisci spazi e underscore con trattini
+            .replaceAll("^-+|-+$", "");   // Rimuovi trattini iniziali e finali
+    }
+
+    private boolean slugExists(String slug) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM tours WHERE slug = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, slug);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0;
+            }
+        }
+        return false;
+    }
+
+    public void insertStop(Stop stop) throws SQLException {
+        String sql = "INSERT INTO stops (tour_id, name, description, stop_order) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setInt(1, stop.getTourId());
+            ps.setString(2, stop.getName());
+            ps.setString(3, stop.getDescription());
+            ps.setInt(4, stop.getStopOrder());
+            ps.executeUpdate();
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rs.next()) {
+                    stop.setId(rs.getInt(1));
                 }
             }
         }
-        return stops;
     }
 }

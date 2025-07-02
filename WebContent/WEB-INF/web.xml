@@ -75,6 +75,16 @@
     <url-pattern>/tours</url-pattern>
   </servlet-mapping>
 
+  <!-- Tour Detail Servlet -->
+  <servlet>
+    <servlet-name>TourDetailServlet</servlet-name>
+    <servlet-class>it.anitour.controller.TourDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TourDetailServlet</servlet-name>
+    <url-pattern>/tour/*</url-pattern>
+  </servlet-mapping>
+
   <!-- Logout Servlet -->
   <servlet>
     <servlet-name>LogoutServlet</servlet-name>
@@ -83,6 +93,16 @@
   <servlet-mapping>
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <!-- Add Tour Servlet -->
+  <servlet>
+    <servlet-name>AddTourServlet</servlet-name>
+    <servlet-class>it.anitour.controller.AddTourServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddTourServlet</servlet-name>
+    <url-pattern>/add-tour</url-pattern>
   </servlet-mapping>
   
 </web-app>

@@ -11,6 +11,7 @@ public class Tour {
     private Date endDate;
     private String imagePath;
     private List<Stop> stops;
+    private String slug;
     
     // Getter e Setter per id
     public int getId() {
@@ -74,5 +75,15 @@ public class Tour {
     }
     public void setStops(List<Stop> stops) {
         this.stops = stops;
+    }
+
+    // Getter e Setter per slug
+    public String getSlug() {
+        return slug;
+    }
+
+    // Setter per slug
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

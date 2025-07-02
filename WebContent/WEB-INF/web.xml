@@ -104,5 +104,15 @@
     <servlet-name>AddTourServlet</servlet-name>
     <url-pattern>/add-tour</url-pattern>
   </servlet-mapping>
+
+  <!-- Delete Tour Servlet -->
+  <servlet>
+    <servlet-name>DeleteTourServlet</servlet-name>
+    <servlet-class>it.anitour.controller.DeleteTourServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteTourServlet</servlet-name>
+    <url-pattern>/delete-tour</url-pattern>
+  </servlet-mapping>
   
 </web-app>

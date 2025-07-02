@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List, it.anitour.model.Tour, it.anitour.model.TourDAO" %>
 <%
     // Controlla se la sessione è valida e contiene i dati necessari
     String username = (String) session.getAttribute("username");
@@ -9,6 +10,18 @@
         return;
     }
     boolean isAdmin = "admin".equals(type);
+    
+    // Se l'utente è admin
+    List<Tour> tourList = null;
+    if (isAdmin) {
+        try {
+            // recupero tutti i tour dal db
+            TourDAO tourDAO = new TourDAO();
+            tourList = tourDAO.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -36,6 +49,34 @@
                     <p><strong>Email:</strong> <%= email %></p>
                     <p><strong>Tipo account:</strong> <%= type %></p>
                 </div>
+                
+                <% 
+                    String error = request.getParameter("error");
+                    String success = request.getParameter("success");
+                    if (error != null) {
+                %>
+                    <div class="alert alert-error">
+                        <% if (error.equals("unauthorized")) { %>
+                            Non hai i permessi per accedere a questa funzione.
+                        <% } else if (error.equals("tour_exists")) { %>
+                            Esiste già un tour con lo stesso nome. Scegli un nome diverso.
+                        <% } else if (error.equals("add_tour_failed")) { %>
+                            Si è verificato un errore durante l'aggiunta del tour.
+                        <% } else if (error.equals("delete_tour_failed")) { %>
+                            Si è verificato un errore durante l'eliminazione del tour.
+                        <% } %>
+                    </div>
+                <% } %>
+                
+                <% if (success != null) { %>
+                    <div class="alert alert-success">
+                        <% if (success.equals("tour_added")) { %>
+                            Tour aggiunto con successo!
+                        <% } else if (success.equals("tour_deleted")) { %>
+                            Tour eliminato con successo!
+                        <% } %>
+                    </div>
+                <% } %>
                 
                 <% if (isAdmin) { %>
                 <div class="admin-section">
@@ -93,6 +134,32 @@
                             
                             <button type="button" class="btn2" id="addStopButton">Aggiungi Tappa</button>
                             <button type="submit" class="btn1">Crea Tour</button>
+                        </form>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <h4>Rimuovi Tour</h4>
+                        <form action="/AniTour/delete-tour" method="post" id="deleteTourForm">
+                            <div class="form-group">
+                                <label for="tourId">Seleziona il tour da eliminare:</label>
+                                <select id="tourId" name="tourId" required class="form-select">
+                                    <option value="" disabled selected>-- Seleziona un tour --</option>
+                                    <% if (tourList != null && !tourList.isEmpty()) {
+                                        for (Tour tour : tourList) { %>
+                                            <option value="<%= tour.getId() %>"><%= tour.getName() %></option>
+                                        <% }
+                                    } %>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="confirmation-checkbox">
+                                    <input type="checkbox" id="confirmDelete" required>
+                                    <label for="confirmDelete">Confermo di voler eliminare questo tour</label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn-delete">Elimina Tour</button>
                         </form>
                     </div>
                 </div>

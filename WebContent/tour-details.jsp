@@ -18,9 +18,20 @@
         </header>
 
         <div class="main-content">
+            <div class="back-button">
+                <a href="/AniTour/tours" class="back-link">
+                    <img src="/AniTour/images/back-arrow.svg" alt="Torna indietro" class="back-icon">
+                    <span>Torna ai tour</span>
+                </a>
+            </div>
+            
             <div class="tour-header">
-                <h1><%= tour.getName() %></h1>
-                <img src="<%= tour.getImagePath() %>" alt="<%= tour.getName() %>" class="tour-image">
+                <div class="image-container">
+                    <img src="<%= tour.getImagePath() %>" alt="<%= tour.getName() %>" class="tour-image">
+                    <div class="tour-title-overlay">
+                        <h1><%= tour.getName() %></h1>
+                    </div>
+                </div>
             </div>
             
             <div class="tour-details">
@@ -39,21 +50,26 @@
                 
                 <div class="tour-stops">
                     <h2>Tappe del tour</h2>
-                    <ul>
+                    <div class="stops-container">
                     <% 
                         List<Stop> stops = tour.getStops();
                         if (stops != null) {
+                            int stopNumber = 1;
                             for (Stop stop : stops) { 
                     %>
-                        <li>
-                            <h3><%= stop.getName() %></h3>
-                            <p><%= stop.getDescription() %></p>
-                        </li>
+                        <div class="stop-card">
+                            <div class="stop-number"><%= stopNumber %></div>
+                            <div class="stop-content">
+                                <h3><%= stop.getName() %></h3>
+                                <p><%= stop.getDescription() %></p>
+                            </div>
+                        </div>
                     <% 
+                                stopNumber++;
                             }
                         }
                     %>
-                    </ul>
+                    </div>
                 </div>
                 
                 <% if (session.getAttribute("username") != null) { %>

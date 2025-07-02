@@ -1,0 +1,290 @@
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    padding-top: 120px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Pulsante per tornare indietro */
+.back-button {
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    align-self: flex-start;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--secondary);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    background-color: rgba(233, 225, 227, 0.5);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.back-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+    object-fit: contain;
+}
+
+.back-link:hover {
+    background-color: var(--card);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.back-link:hover .back-icon {
+    transform: translateX(-3px) scale(1.1);
+}
+
+/* Header con immagine e titolo */
+.tour-header {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.tour-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: subtle-move 25s infinite alternate ease-in-out;
+}
+
+@keyframes subtle-move {
+    0% {
+        transform: scale(1.05) translate(-1%, -1%);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.07) translate(1%, 1%);
+        opacity: 0.95;
+    }
+    100% {
+        transform: scale(1.05) translate(-1%, -1%);
+        opacity: 0.9;
+    }
+}
+
+.tour-title-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+}
+
+.tour-title-overlay h1 {
+    color: white;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Dettagli del tour */
+.tour-details {
+    background-color: var(--card);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.tour-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.tour-info {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tour-info p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.tour-info strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Tappe del tour */
+.tour-stops {
+    margin-top: 3rem;
+}
+
+.tour-stops h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.stops-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.stop-card {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.stop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.stop-number {
+    flex: 0 0 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding: 1rem;
+}
+
+.stop-content {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+.stop-content h3 {
+    color: var(--secondary);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.stop-content p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Sezione prenotazione */
+.booking-section {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.booking-section .btn1 {
+    max-width: 300px;
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.login-prompt {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 1rem;
+}
+
+.login-prompt a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.login-prompt a:hover {
+    text-decoration: underline;
+    color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1.5rem;
+        padding-top: 100px; /* Ridotto per schermi più piccoli */
+    }
+    
+    .image-container {
+        height: 300px; /* Altezza ridotta su tablet */
+    }
+    
+    .tour-details {
+        padding: 1.5rem;
+    }
+    
+    .tour-title-overlay h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+    
+    .back-link span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 1rem;
+        padding-top: 80px; /* Ulteriormente ridotto per smartphone */
+    }
+    
+    .image-container {
+        height: 220px; /* Altezza ancora più ridotta su smartphone */
+    }
+    
+    .stop-card {
+        flex-direction: column; /* Card stop verticali su smartphone */
+    }
+    
+    .stop-number {
+        width: 100%;
+        padding: 0.5rem;
+    }
+    
+    .tour-details {
+        padding: 1.2rem;
+    }
+    
+    .back-button {
+        margin-bottom: 1.5rem;
+    }
+    
+    .back-link {
+        padding: 0.5rem 1rem;
+    }
+}

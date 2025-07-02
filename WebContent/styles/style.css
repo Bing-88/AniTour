@@ -207,21 +207,25 @@ html {
   justify-content: flex-end;
 }
 
-#logo-full {
+#logo-full,
+#logo-small {
   width: auto;
-  height: 50px;
-  max-height: 50px;
   transition: transform 0.3s ease;
 }
 
-#logo-full:hover {
-  transform: scale(1.05);
+#logo-full {
+  height: 50px;
+  max-height: 50px;
 }
 
-@media (max-width: 600px) {
-  #logo-full {
-    height: 40px;
-  }
+#logo-small {
+  height: 40px;
+  max-height: 40px;
+}
+
+#logo-full:hover,
+#logo-small:hover {
+  transform: scale(1.05);
 }
 
 .login-icon {

@@ -125,3 +125,29 @@
   color: var(--secondary);
   margin-top: 2rem;
 }
+
+.search-info {
+  color: var(--secondary);
+  font-size: 1.2rem;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.back-button {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.back-button .btn1 {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .search-info {
+    font-size: 1rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
+  }
+}

@@ -283,6 +283,19 @@
     transition: max-height 0.5s ease-in;
 }
 
+/* Fix per l'espansione dinamica quando i campi di modifica tour sono visibili */
+.collapsible-content:has(#updateTourFields[style*="display: block"]) {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* Fallback per browser che non supportano :has() */
+.collapsible-content.expanded-for-update {
+    max-height: none !important;
+    overflow: visible !important;
+    transition: none !important;
+}
+
 /* Stili per la gestione utenti */
 .users-table-container {
     overflow-x: auto;
@@ -1137,4 +1150,66 @@
     padding: 1rem;
     margin-bottom: 1.5rem;
     border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Stili specifici per la sezione Modifica Tour */
+#updateTourFields {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#updateStopsContainer {
+    max-height: unset;
+    overflow: visible;
+}
+
+#updateStopsContainer .tour-stop {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#updateStopsContainer .tour-stop:hover {
+    border-color: var(--primary);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#updateStopsContainer .tour-stop .btn-delete {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#updateStopsContainer .tour-stop .btn-delete:hover {
+    background-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* Stili per il form di aggiornamento tour */
+#updateTourForm .form-group {
+    margin-bottom: 1.5rem;
+}
+
+#updateTourForm .btn1 {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Messaggio informativo quando nessun tour è selezionato */
+.update-tour-info {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-left: 4px solid #3498db;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    color: #2980b9;
+    font-size: 0.9rem;
 }

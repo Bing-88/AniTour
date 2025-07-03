@@ -204,6 +204,83 @@
                     </div>
                     
                     <div class="admin-card">
+                        <h4 class="collapsible">Modifica Tour <span class="collapse-icon">+</span></h4>
+                        <div class="collapsible-content">
+                            <!-- Messaggi di errore/successo per l'aggiornamento -->
+                            <% String updateTourError = (String) request.getAttribute("updateTourError"); %>
+                            <% if (updateTourError != null) { %>
+                                <div class="alert alert-error">
+                                    <%= updateTourError %>
+                                </div>
+                            <% } %>
+                            
+                            <% String updateTourSuccess = (String) request.getAttribute("updateTourSuccess"); %>
+                            <% if (updateTourSuccess != null) { %>
+                                <div class="alert alert-success">
+                                    <%= updateTourSuccess %>
+                                </div>
+                            <% } %>
+                            
+                            <div id="updateTourFormError" class="form-error-message form-error-hidden" style="display:none !important; visibility:hidden !important; opacity:0 !important; height:0 !important; position:absolute !important; overflow:hidden !important; clip:rect(0,0,0,0) !important;" hidden aria-hidden="true"></div>
+                            
+                            <form action="/AniTour/update-tour" method="post" enctype="multipart/form-data" id="updateTourForm">
+                                <!-- Campo hidden per mantenere il tourId -->
+                                <input type="hidden" id="updateTourIdHidden" name="tourId" value="">
+                                
+                                <div class="form-group">
+                                    <label for="updateTourSelect">Seleziona il tour da modificare:</label>
+                                    <select id="updateTourSelect" required class="form-select">
+                                        <option value="" disabled selected>-- Seleziona un tour --</option>
+                                        <% if (tourList != null && !tourList.isEmpty()) {
+                                            for (Tour tour : tourList) { %>
+                                                <option value="<%= tour.getId() %>"><%= tour.getName() %></option>
+                                            <% }
+                                        } %>
+                                    </select>
+                                </div>
+                                
+                                <div id="updateTourFields" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="updateTourName">Nome del Tour:</label>
+                                        <input type="text" id="updateTourName" name="name" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="updateTourDescription">Descrizione:</label>
+                                        <textarea id="updateTourDescription" name="description" rows="4" required></textarea>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group half">
+                                            <label for="updateTourPrice">Prezzo (€):</label>
+                                            <input type="number" id="updateTourPrice" name="price" step="0.01" min="0" required>
+                                        </div>
+                                        
+                                        <div class="form-group half">
+                                            <label for="updateTourImage">Nuova Immagine (opzionale):</label>
+                                            <input type="file" id="updateTourImage" name="image" accept="image/*">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group half">
+                                            <label for="updateTourStartDate">Data di Inizio:</label>
+                                            <input type="date" id="updateTourStartDate" name="startDate" required>
+                                        </div>
+                                        
+                                        <div class="form-group half">
+                                            <label for="updateTourEndDate">Data di Fine:</label>
+                                            <input type="date" id="updateTourEndDate" name="endDate" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn1">Aggiorna Tour</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-card">
                         <h4 class="collapsible">Gestione Utenti <span class="collapse-icon">+</span></h4>
                         <div class="collapsible-content">
                             <% if (userList != null && !userList.isEmpty()) { %>

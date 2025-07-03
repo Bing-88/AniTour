@@ -105,9 +105,66 @@ public class TourDAO {
     }
 
     public void update(Tour tour) throws SQLException {
-        String sql = "UPDATE tours SET name=?, description=?, price=?, start_date=?, end_date=?, image_path=? WHERE id=?";
+        Connection conn = null;
+        try {
+            conn = DBConnection.getConnection();
+            conn.setAutoCommit(false);
+            
+            // Aggiorna i dati del tour
+            String updateTourSql = "UPDATE tours SET name=?, description=?, price=?, start_date=?, end_date=?, image_path=? WHERE id=?";
+            try (PreparedStatement ps = conn.prepareStatement(updateTourSql)) {
+                ps.setString(1, tour.getName());
+                ps.setString(2, tour.getDescription());
+                ps.setDouble(3, tour.getPrice());
+                ps.setDate(4, tour.getStartDate());
+                ps.setDate(5, tour.getEndDate());
+                ps.setString(6, tour.getImagePath());
+                ps.setInt(7, tour.getId());
+                ps.executeUpdate();
+            }
+            
+            // Elimina le tappe esistenti
+            String deleteStopsSql = "DELETE FROM stops WHERE tour_id = ?";
+            try (PreparedStatement ps = conn.prepareStatement(deleteStopsSql)) {
+                ps.setInt(1, tour.getId());
+                ps.executeUpdate();
+            }
+            
+            // Inserisci le nuove tappe
+            if (tour.getStops() != null && !tour.getStops().isEmpty()) {
+                String insertStopSql = "INSERT INTO stops (tour_id, name, description, stop_order) VALUES (?, ?, ?, ?)";
+                try (PreparedStatement ps = conn.prepareStatement(insertStopSql)) {
+                    for (int i = 0; i < tour.getStops().size(); i++) {
+                        Stop stop = tour.getStops().get(i);
+                        ps.setInt(1, tour.getId());
+                        ps.setString(2, stop.getName());
+                        ps.setString(3, stop.getDescription());
+                        ps.setInt(4, i + 1);
+                        ps.addBatch();
+                    }
+                    ps.executeBatch();
+                }
+            }
+            
+            conn.commit();
+        } catch (SQLException e) {
+            if (conn != null) {
+                conn.rollback();
+            }
+            throw e;
+        } finally {
+            if (conn != null) {
+                conn.setAutoCommit(true);
+                conn.close();
+            }
+        }
+    }
+
+    //Aggiorna solo i dati base del tour (nome, descrizione, prezzo, date, immagine) senza modificare le tappe esistenti
+    public void updateBasicInfo(Tour tour) throws SQLException {
+        String updateTourSql = "UPDATE tours SET name=?, description=?, price=?, start_date=?, end_date=?, image_path=? WHERE id=?";
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
+             PreparedStatement ps = conn.prepareStatement(updateTourSql)) {
             ps.setString(1, tour.getName());
             ps.setString(2, tour.getDescription());
             ps.setDouble(3, tour.getPrice());

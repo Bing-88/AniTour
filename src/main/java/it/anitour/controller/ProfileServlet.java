@@ -50,6 +50,46 @@ public class ProfileServlet extends HttpServlet {
         boolean isAdmin = "admin".equals(userType);
         Integer userId = (Integer) session.getAttribute("userId");
         
+        // Gestione messaggi di successo/errore per l'aggiornamento tour
+        String updateTourSuccess = request.getParameter("updateTourSuccess");
+        String updateTourError = request.getParameter("updateTourError");
+        
+        if ("true".equals(updateTourSuccess)) {
+            request.setAttribute("updateTourSuccess", "Tour aggiornato con successo!");
+        } else if (updateTourError != null) {
+            String errorMessage;
+            switch (updateTourError) {
+                case "missing_id":
+                    errorMessage = "ID tour non specificato";
+                    break;
+                case "tour_not_found":
+                    errorMessage = "Tour non trovato";
+                    break;
+                case "missing_fields":
+                    errorMessage = "Tutti i campi sono obbligatori";
+                    break;
+                case "invalid_dates":
+                    errorMessage = "La data di fine deve essere successiva alla data di inizio";
+                    break;
+                case "no_stops":
+                    errorMessage = "È necessario specificare almeno una tappa";
+                    break;
+                case "format":
+                    errorMessage = "Formato prezzo o date non valido";
+                    break;
+                case "database":
+                    errorMessage = "Errore del database";
+                    break;
+                case "unexpected":
+                    errorMessage = "Errore imprevisto";
+                    break;
+                default:
+                    errorMessage = "Errore sconosciuto";
+                    break;
+            }
+            request.setAttribute("updateTourError", errorMessage);
+        }
+        
         // Se l'utente è admin, carica dati aggiuntivi
         if (isAdmin) {
             try {

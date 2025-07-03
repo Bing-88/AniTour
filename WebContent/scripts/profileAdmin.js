@@ -348,6 +348,220 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Gestione della sezione "Modifica Tour"
+    const updateTourSelect = document.getElementById('updateTourSelect');
+    const updateTourFields = document.getElementById('updateTourFields');
+    const updateTourForm = document.getElementById('updateTourForm');
+    const updateTourFormError = document.getElementById('updateTourFormError');
+    
+    console.log('Debug elementi modifica tour:');
+    console.log('updateTourSelect:', updateTourSelect);
+    console.log('updateTourFields:', updateTourFields);
+    console.log('updateTourForm:', updateTourForm);
+    
+    if (updateTourSelect) {
+        console.log('Evento change aggiunto a updateTourSelect');
+        updateTourSelect.addEventListener('change', function() {
+            const tourId = this.value;
+            console.log('Selezionato tour ID:', tourId);
+            
+            if (tourId) {
+                // Aggiorna il campo hidden con il tourId selezionato
+                const hiddenTourId = document.getElementById('updateTourIdHidden');
+                if (hiddenTourId) {
+                    hiddenTourId.value = tourId;
+                    console.log('Campo hidden aggiornato con tourId:', tourId);
+                } else {
+                    console.error('Campo hidden updateTourIdHidden non trovato!');
+                }
+                
+                // Mostra i campi del form
+                console.log('Mostrando updateTourFields...');
+                
+                // Prima assicuriamoci che la sezione collassabile sia aperta
+                const updateTourCollapsible = document.querySelector('.admin-card h4.collapsible');
+                let collapsibleContent = null;
+                
+                if (updateTourCollapsible && updateTourCollapsible.textContent.includes('Modifica Tour')) {
+                    collapsibleContent = updateTourCollapsible.nextElementSibling;
+                    if (collapsibleContent && !updateTourCollapsible.classList.contains('active')) {
+                        console.log('Aprendo sezione collassabile...');
+                        updateTourCollapsible.classList.add('active');
+                        const icon = updateTourCollapsible.querySelector('.collapse-icon');
+                        if (icon) {
+                            icon.textContent = '-';
+                        }
+                        collapsibleContent.style.maxHeight = collapsibleContent.scrollHeight + "px";
+                    }
+                }
+                
+                updateTourFields.style.display = 'block';
+                updateTourFields.style.visibility = 'visible';
+                updateTourFields.style.opacity = '1';
+                
+                // Aggiorna l'altezza della sezione collassabile dopo aver mostrato i campi
+                if (collapsibleContent) {
+                    // Aggiungi classe CSS per forzare l'espansione
+                    collapsibleContent.classList.add('expanded-for-update');
+                    
+                    // Forza il ricalcolo dell'altezza in modo più aggressivo
+                    setTimeout(() => {
+                        // Salva la transizione originale
+                        const originalTransition = collapsibleContent.style.transition;
+                        
+                        // Disabilita temporaneamente la transizione per evitare conflitti
+                        collapsibleContent.style.transition = 'none';
+                        
+                        // Rimuovi temporaneamente maxHeight per permettere l'espansione naturale
+                        collapsibleContent.style.maxHeight = 'none';
+                        
+                        // Forza il reflow del DOM
+                        collapsibleContent.offsetHeight;
+                        
+                        // Riapplica maxHeight con il nuovo valore
+                        const newHeight = collapsibleContent.scrollHeight;
+                        collapsibleContent.style.maxHeight = newHeight + "px";
+                        
+                        // Riabilita la transizione dopo un breve ritardo
+                        setTimeout(() => {
+                            collapsibleContent.style.transition = originalTransition;
+                        }, 10);
+                        
+                        console.log('Altezza collapsible aggiornata da auto a:', newHeight + "px");
+                    }, 50); // Aumentato il timeout per dare più tempo al DOM
+                }
+                
+                console.log('updateTourFields display dopo impostazione:', updateTourFields.style.display);
+                console.log('updateTourFields computed style:', getComputedStyle(updateTourFields).display);
+                
+                // Carica i dati del tour selezionato
+                console.log('Caricando dati tour...');
+                fetch('/AniTour/update-tour?action=getTourData&tourId=' + tourId)
+                    .then(response => {
+                        console.log('Risposta ricevuta:', response);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Dati tour ricevuti:', data);
+                        if (data.error) {
+                            throw new Error(data.error);
+                        }
+                        
+                        // Popola i campi del form
+                        document.getElementById('updateTourName').value = data.name || '';
+                        document.getElementById('updateTourDescription').value = data.description || '';
+                        document.getElementById('updateTourPrice').value = data.price || '';
+                        document.getElementById('updateTourStartDate').value = data.startDate || '';
+                        document.getElementById('updateTourEndDate').value = data.endDate || '';
+                        
+                        console.log('Campi popolati con successo');
+                        
+                        // Nascondi eventuali messaggi di errore
+                        if (updateTourFormError) {
+                            updateTourFormError.style.display = 'none';
+                            updateTourFormError.textContent = '';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Errore nel caricamento dei dati del tour:', error);
+                        if (updateTourFormError) {
+                            updateTourFormError.textContent = 'Errore nel caricamento dei dati del tour: ' + error.message;
+                            updateTourFormError.style.display = 'block';
+                            updateTourFormError.classList.remove('form-error-hidden');
+                        }
+                        updateTourFields.style.display = 'none';
+                    });
+            } else {
+                // Reset del campo hidden quando nessun tour è selezionato
+                const hiddenTourId = document.getElementById('updateTourIdHidden');
+                if (hiddenTourId) {
+                    hiddenTourId.value = '';
+                }
+                updateTourFields.style.display = 'none';
+                
+                // Rimuovi la classe CSS per l'espansione forzata
+                const updateTourCollapsible = document.querySelector('.admin-card h4.collapsible');
+                if (updateTourCollapsible && updateTourCollapsible.textContent.includes('Modifica Tour')) {
+                    const collapsibleContent = updateTourCollapsible.nextElementSibling;
+                    if (collapsibleContent) {
+                        collapsibleContent.classList.remove('expanded-for-update');
+                        
+                        // Aggiorna l'altezza della sezione collassabile dopo aver nascosto i campi
+                        if (updateTourCollapsible.classList.contains('active')) {
+                            setTimeout(() => {
+                                collapsibleContent.style.maxHeight = collapsibleContent.scrollHeight + "px";
+                            }, 10);
+                        }
+                    }
+                }
+            }
+        });
+    } else {
+        console.error('updateTourSelect non trovato!');
+    }
+    
+    // Validazione delle date per il form di aggiornamento
+    const updateStartDateInput = document.getElementById('updateTourStartDate');
+    const updateEndDateInput = document.getElementById('updateTourEndDate');
+    
+    if (updateStartDateInput && updateEndDateInput) {
+        function validateUpdateDates() {
+            if (updateStartDateInput.value && updateEndDateInput.value) {
+                const startDate = new Date(updateStartDateInput.value);
+                const endDate = new Date(updateEndDateInput.value);
+                
+                if (endDate < startDate) {
+                    if (updateTourFormError) {
+                        updateTourFormError.textContent = 'La data di fine deve essere successiva alla data di inizio.';
+                        updateTourFormError.style.display = 'block';
+                        updateTourFormError.classList.remove('form-error-hidden');
+                    }
+                    return false;
+                } else {
+                    if (updateTourFormError) {
+                        updateTourFormError.textContent = '';
+                        updateTourFormError.style.display = 'none';
+                        updateTourFormError.classList.add('form-error-hidden');
+                    }
+                    return true;
+                }
+            }
+            return true;
+        }
+        
+        updateStartDateInput.addEventListener('change', validateUpdateDates);
+        updateEndDateInput.addEventListener('change', validateUpdateDates);
+    }
+    
+    // Gestione del submit del form di aggiornamento
+    if (updateTourForm) {
+        updateTourForm.addEventListener('submit', function(e) {
+            // Controlla che sia stato selezionato un tour
+            const tourId = document.getElementById('updateTourIdHidden').value;
+            if (!tourId) {
+                e.preventDefault();
+                if (updateTourFormError) {
+                    updateTourFormError.textContent = 'È necessario selezionare un tour da modificare.';
+                    updateTourFormError.style.display = 'block';
+                    updateTourFormError.classList.remove('form-error-hidden');
+                }
+                return false;
+            }
+            
+            // Valida le date
+            if (!validateUpdateDates()) {
+                e.preventDefault();
+                return false;
+            }
+            
+            // Debug: stampa il valore del campo hidden prima del submit
+            console.log('Submitting form with tourId:', tourId);
+            
+            // Assicurati che il campo hidden abbia il valore corretto
+            document.getElementById('updateTourIdHidden').value = tourId;
+        });
+    }
+    
     // Chiudi il modal cliccando all'esterno
     window.onclick = function(event) {
         const modal = document.getElementById('orderModal');

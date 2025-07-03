@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
          xmlns="https://jakarta.ee/xml/ns/jakartaee" 
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" 
-         id="WebApp_ID" version="6.0">
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" 
+         id="WebApp_ID" version="5.0">
   <display-name>AniTour</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
@@ -166,6 +166,21 @@
   <servlet-mapping>
     <servlet-name>CheckoutServlet</servlet-name>
     <url-pattern>/checkout</url-pattern>
+  </servlet-mapping>
+
+  <!-- Update Tour Servlet -->
+  <servlet>
+    <servlet-name>UpdateTourServlet</servlet-name>
+    <servlet-class>it.anitour.controller.UpdateTourServlet</servlet-class>
+    <multipart-config>
+      <max-file-size>10485760</max-file-size>         <!-- 10MB -->
+      <max-request-size>15728640</max-request-size>   <!-- 15MB -->
+      <file-size-threshold>1048576</file-size-threshold> <!-- 1MB -->
+    </multipart-config>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateTourServlet</servlet-name>
+    <url-pattern>/update-tour</url-pattern>
   </servlet-mapping>
   
 </web-app>

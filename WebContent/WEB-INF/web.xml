@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns="https://jakarta.ee/xml/ns/jakartaee" 
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" 
+         id="WebApp_ID" version="6.0">
   <display-name>AniTour</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
@@ -133,6 +136,36 @@
   <servlet-mapping>
     <servlet-name>UpdateUserTypeServlet</servlet-name>
     <url-pattern>/update-user-type</url-pattern>
+  </servlet-mapping>
+
+  <!-- Cart Count Servlet -->
+  <servlet>
+    <servlet-name>CartCountServlet</servlet-name>
+    <servlet-class>it.anitour.controller.CartCountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartCountServlet</servlet-name>
+    <url-pattern>/cart/count</url-pattern>
+  </servlet-mapping>
+
+  <!-- Cart Servlet -->
+  <servlet>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>it.anitour.controller.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/cart/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- Checkout Servlet -->
+  <servlet>
+    <servlet-name>CheckoutServlet</servlet-name>
+    <servlet-class>it.anitour.controller.CheckoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckoutServlet</servlet-name>
+    <url-pattern>/checkout</url-pattern>
   </servlet-mapping>
   
 </web-app>

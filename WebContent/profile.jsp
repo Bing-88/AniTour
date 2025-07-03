@@ -146,6 +146,8 @@
                                     <div class="form-group half">
                                         <label for="tourEndDate">Data fine:</label>
                                         <input type="date" id="tourEndDate" name="endDate" required>
+                                        <!-- Messaggio di errore per le date -->
+                                        <p class="error-message" id="tourDateError" style="display: none; color: #e74c3c; font-size: 0.85rem; margin-top: 0.5rem;"></p>
                                     </div>
                                 </div>
                                 
@@ -271,6 +273,8 @@
                                         <div class="form-group half">
                                             <label for="updateTourEndDate">Data di Fine:</label>
                                             <input type="date" id="updateTourEndDate" name="endDate" required>
+                                            <!-- Messaggio di errore per le date -->
+                                            <p class="error-message" id="updateTourDateError" style="display: none; color: #e74c3c; font-size: 0.85rem; margin-top: 0.5rem;"></p>
                                         </div>
                                     </div>
                                     

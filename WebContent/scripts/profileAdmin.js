@@ -101,42 +101,63 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validazione date
     const startDateInput = document.getElementById('tourStartDate');
     const endDateInput = document.getElementById('tourEndDate');
+    const tourDateError = document.getElementById('tourDateError');
     
     // Gestione form di errore
     const addTourForm = document.getElementById('addTourForm');
     const addTourFormError = document.getElementById('addTourFormError');
     
-    if (startDateInput && endDateInput) {
-        // Creazione del messaggio di errore
-        const dateErrorElement = document.createElement('p');
-        dateErrorElement.className = 'error-message';
-        dateErrorElement.id = 'tourDateError';
-        if (endDateInput.parentNode) {
-            endDateInput.parentNode.appendChild(dateErrorElement);
-        }
-        
-        endDateInput.addEventListener('change', function() {
-            if (startDateInput.value && this.value) {
+    if (startDateInput && endDateInput && tourDateError) {
+        function validateDates() {
+            // Nascondi il messaggio di errore inizialmente
+            tourDateError.style.display = 'none';
+            tourDateError.textContent = '';
+            
+            if (startDateInput.value && endDateInput.value) {
                 const startDate = new Date(startDateInput.value);
-                const endDate = new Date(this.value);
+                const endDate = new Date(endDateInput.value);
                 
                 if (endDate < startDate) {
-                    this.value = '';
-                    dateErrorElement.textContent = 'La data di fine deve essere successiva alla data di inizio.';
+                    // Mostra messaggio di errore specifico per le date
+                    tourDateError.textContent = 'La data di fine deve essere successiva alla data di inizio.';
+                    tourDateError.style.display = 'block';
                     
-                    // Mostra anche il messaggio nel box di errore generale
+                    // Mostra anche nel box di errore generale
                     if (addTourFormError) {
                         addTourFormError.textContent = 'La data di fine deve essere successiva alla data di inizio.';
                         addTourFormError.style.display = 'block';
+                        addTourFormError.classList.remove('form-error-hidden');
                     }
-                } else {
-                    dateErrorElement.textContent = '';
                     
-                    // Nascondi il messaggio di errore generale
+                    // Resetta il campo data di fine
+                    endDateInput.value = '';
+                    return false;
+                } else {
+                    // Nasconde i messaggi di errore se le date sono valide
+                    tourDateError.style.display = 'none';
                     if (addTourFormError) {
                         addTourFormError.textContent = '';
                         addTourFormError.style.display = 'none';
+                        addTourFormError.classList.add('form-error-hidden');
                     }
+                    return true;
+                }
+            }
+            return true;
+        }
+        
+        startDateInput.addEventListener('change', validateDates);
+        endDateInput.addEventListener('change', validateDates);
+    }
+    
+    // Gestione del submit del form "Aggiungi Tour"
+    if (addTourForm) {
+        addTourForm.addEventListener('submit', function(e) {
+            // Valida le date prima di inviare il form
+            if (startDateInput && endDateInput && tourDateError) {
+                if (!validateDates()) {
+                    e.preventDefault();
+                    return false;
                 }
             }
         });
@@ -298,6 +319,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 addTourForm.addEventListener('reset', function() {
                     addTourFormError.textContent = '';
                     addTourFormError.style.display = 'none';
+                    
+                    // Nascondi anche il messaggio di errore delle date
+                    const tourDateError = document.getElementById('tourDateError');
+                    if (tourDateError) {
+                        tourDateError.style.display = 'none';
+                        tourDateError.textContent = '';
+                    }
                 });
             }
         }
@@ -461,6 +489,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             updateTourFormError.style.display = 'none';
                             updateTourFormError.textContent = '';
                         }
+                        
+                        // Nascondi anche il messaggio di errore delle date
+                        const updateTourDateError = document.getElementById('updateTourDateError');
+                        if (updateTourDateError) {
+                            updateTourDateError.style.display = 'none';
+                            updateTourDateError.textContent = '';
+                        }
                     })
                     .catch(error => {
                         console.error('Errore nel caricamento dei dati del tour:', error);
@@ -503,21 +538,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Validazione delle date per il form di aggiornamento
     const updateStartDateInput = document.getElementById('updateTourStartDate');
     const updateEndDateInput = document.getElementById('updateTourEndDate');
+    const updateTourDateError = document.getElementById('updateTourDateError');
     
-    if (updateStartDateInput && updateEndDateInput) {
+    if (updateStartDateInput && updateEndDateInput && updateTourDateError) {
         function validateUpdateDates() {
+            // Nascondi il messaggio di errore inizialmente
+            updateTourDateError.style.display = 'none';
+            updateTourDateError.textContent = '';
+            
             if (updateStartDateInput.value && updateEndDateInput.value) {
                 const startDate = new Date(updateStartDateInput.value);
                 const endDate = new Date(updateEndDateInput.value);
                 
                 if (endDate < startDate) {
+                    // Mostra messaggio di errore specifico per le date
+                    updateTourDateError.textContent = 'La data di fine deve essere successiva alla data di inizio.';
+                    updateTourDateError.style.display = 'block';
+                    
+                    // Mostra anche nel box di errore generale
                     if (updateTourFormError) {
                         updateTourFormError.textContent = 'La data di fine deve essere successiva alla data di inizio.';
                         updateTourFormError.style.display = 'block';
                         updateTourFormError.classList.remove('form-error-hidden');
                     }
+                    
+                    // Resetta il campo data di fine
+                    updateEndDateInput.value = '';
                     return false;
                 } else {
+                    // Nasconde i messaggi di errore se le date sono valide
+                    updateTourDateError.style.display = 'none';
                     if (updateTourFormError) {
                         updateTourFormError.textContent = '';
                         updateTourFormError.style.display = 'none';

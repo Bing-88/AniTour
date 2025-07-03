@@ -8,6 +8,10 @@
         </a> 
     </div>
     <div id="header-right">
+        <a href="/AniTour/cart" class="cart-icon-wrapper">
+            <img src="/AniTour/images/cart.svg" alt="Carrello" class="cart-icon">
+            <span class="cart-count" id="cart-count" style="opacity: 0; transition: opacity 0.3s ease;">0</span>
+        </a>
         <% if (session.getAttribute("username") != null) { %>
             <a href="/AniTour/profile">
                 <img src="/AniTour/images/user-icon.png" alt="icona" class="login-icon">
@@ -41,6 +45,47 @@
             display: block !important;
         }
     }
+    
+    /* Stili per l'icona del carrello */
+    .cart-icon-wrapper {
+        position: relative;
+        margin-right: 1rem;
+    }
+    
+    .cart-icon {
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .cart-icon:hover {
+        transform: scale(1.1);
+    }
+    
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: var(--primary);
+        color: white;
+        font-size: 0.7rem;
+        font-weight: bold;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    #header-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
 </style>
 
 <script src="/AniTour/scripts/logo-responsive.js"></script>
+<script src="/AniTour/scripts/cart-count.js"></script>

@@ -9,9 +9,24 @@ public class TourDAO {
 
     public TourDAO() {}
 
+    /**
+     * Elimina un tour impostandolo come cancellato invece di rimuoverlo fisicamente
+     */
+    public void delete(int id) throws SQLException {
+        String sql = "UPDATE tours SET deleted = TRUE WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }
+    }
+
+    /**
+     * Trova tutti i tour attivi (non cancellati)
+     */
     public List<Tour> findAll() throws SQLException {
         List<Tour> tours = new ArrayList<>();
-        String sql = "SELECT * FROM tours";
+        String sql = "SELECT * FROM tours WHERE deleted = FALSE";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -31,8 +46,11 @@ public class TourDAO {
         return tours;
     }
 
+    /**
+     * Trova un tour anche se cancellato (per mostrarlo negli ordini)
+     */
     public Tour findById(int id) throws SQLException {
-        String sql = "SELECT * FROM tours WHERE id = ?";
+        String sql = "SELECT * FROM tours WHERE id = ?"; // Recupera anche i tour cancellati
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -46,6 +64,7 @@ public class TourDAO {
                     tour.setStartDate(rs.getDate("start_date"));
                     tour.setEndDate(rs.getDate("end_date"));
                     tour.setImagePath(rs.getString("image_path"));
+                    tour.setSlug(rs.getString("slug"));
                     return tour;
                 }
             }
@@ -96,15 +115,6 @@ public class TourDAO {
             ps.setDate(5, tour.getEndDate());
             ps.setString(6, tour.getImagePath());
             ps.setInt(7, tour.getId());
-            ps.executeUpdate();
-        }
-    }
-
-    public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM tours WHERE id = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, id);
             ps.executeUpdate();
         }
     }
@@ -194,9 +204,10 @@ public class TourDAO {
         }
     }
 
+    //Metodi di ricerca
     public List<Tour> searchByTheme(String theme) throws SQLException {
         List<Tour> tours = new ArrayList<>();
-        String sql = "SELECT * FROM tours WHERE name LIKE ? OR description LIKE ?";
+        String sql = "SELECT * FROM tours WHERE (name LIKE ? OR description LIKE ?) AND deleted = FALSE";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             String searchPattern = "%" + theme + "%";
@@ -226,13 +237,13 @@ public class TourDAO {
         
         if (startDate != null && endDate != null) {
             // Cerca tour che iniziano tra startDate e endDate
-            sql = "SELECT * FROM tours WHERE start_date >= ? AND start_date <= ?";
+            sql = "SELECT * FROM tours WHERE start_date >= ? AND start_date <= ? AND deleted = FALSE";
         } else if (startDate != null) {
             // Cerca tour che iniziano dopo startDate
-            sql = "SELECT * FROM tours WHERE start_date >= ?";
+            sql = "SELECT * FROM tours WHERE start_date >= ? AND deleted = FALSE";
         } else if (endDate != null) {
             // Cerca tour che iniziano prima di endDate
-            sql = "SELECT * FROM tours WHERE start_date <= ?";
+            sql = "SELECT * FROM tours WHERE start_date <= ? AND deleted = FALSE";
         } else {
             // Nessuna data specificata, ritorna tutti i tour
             return findAll();
@@ -270,7 +281,7 @@ public class TourDAO {
 
     public List<Tour> searchByPrice(double minPrice, double maxPrice) throws SQLException {
         List<Tour> tours = new ArrayList<>();
-        String sql = "SELECT * FROM tours WHERE price >= ? AND price <= ?";
+        String sql = "SELECT * FROM tours WHERE price >= ? AND price <= ? AND deleted = FALSE";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setDouble(1, minPrice);

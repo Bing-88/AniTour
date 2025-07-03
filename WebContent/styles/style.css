@@ -286,3 +286,21 @@ footer {
     margin-top: 0.5rem;
     font-weight: 500;
 }
+
+/* Contatore carrello */
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease, background-color 0.3s ease; /* Transizione fluida per l'opacità */
+}

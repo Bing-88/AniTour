@@ -72,18 +72,16 @@
                     </div>
                 </div>
                 
-                <% if (session.getAttribute("username") != null) { %>
                 <div class="booking-section">
-                    <form action="/AniTour/book" method="post">
+                    <form action="/AniTour/cart/add" method="post">
                         <input type="hidden" name="tourId" value="<%= tour.getId() %>">
-                        <button type="submit" class="btn1">Prenota ora</button>
+                        <div class="quantity-selector">
+                            <label for="quantity">Quantità:</label>
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
+                        </div>
+                        <button type="submit" class="btn1">Aggiungi al carrello</button>
                     </form>
                 </div>
-                <% } else { %>
-                <div class="login-prompt">
-                    <p>Effettua il <a href="/AniTour/login">login</a> per prenotare questo tour.</p>
-                </div>
-                <% } %>
             </div>
         </div>
 

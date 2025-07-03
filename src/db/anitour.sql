@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS tours (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     image_path VARCHAR(255),
-    slug VARCHAR(255) NOT NULL UNIQUE
+    slug VARCHAR(255) NOT NULL UNIQUE,
+    deleted BOOLEAN DEFAULT FALSE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS stops (
@@ -31,12 +32,28 @@ CREATE TABLE IF NOT EXISTS stops (
 
 CREATE TABLE IF NOT EXISTS bookings (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    tour_id INT NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
+    user_id INT,
+    session_id VARCHAR(255), 
+    tour_id INT,
+    quantity INT NOT NULL DEFAULT 1,
+    price DECIMAL(10, 2) NOT NULL, 
+    tour_name VARCHAR(100), 
+    tour_image_path VARCHAR(255), 
     booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE
+    status ENUM('cart', 'completed') DEFAULT 'cart',
+    shipping_name VARCHAR(100),
+    shipping_address VARCHAR(255),
+    shipping_city VARCHAR(100),
+    shipping_country VARCHAR(100),
+    shipping_postal_code VARCHAR(20),
+    shipping_email VARCHAR(100),
+    shipping_phone VARCHAR(20),
+    payment_method VARCHAR(100) DEFAULT 'credit_card',
+    payment_status ENUM('completed') DEFAULT 'completed',
+    order_identifier VARCHAR(100) DEFAULT NULL,
+
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL,
+    FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE SET NULL
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 INSERT INTO users (username, password, email, type) VALUES
@@ -84,7 +101,6 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
 ('K-ON!', '
                 Musica, amicizia e momenti indimenticabili.<br>
-                Unisciti al club di musica leggera e scopri il mondo di K-ON!<br>
                 Questo e molto altro, nel tour a tema K-ON!<br>
 ', 500.00, '2025-06-01', '2025-06-10', '/AniTour/images/kon1.jpg', 'k-on');
 
@@ -96,7 +112,6 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
 ('Outer Wilds', '
                 Esplora l\'universo, scopri antiche civiltà e risolvi il mistero del sistema solare.<br>
-                Un viaggio tra stelle e pianeti, tra enigmi e scoperte.<br>
                 Questo e molto altro, nel tour a tema Outer Wilds!<br>
 ', 40000099.99, '2025-07-01', '2025-07-15', '/AniTour/images/outerwilds.jpg', 'outer-wilds');
 
@@ -108,7 +123,6 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
 ('Vinland Saga', '
                 Unisciti a Thorfinn e scopri il mondo dei Vichinghi!<br>
-                Tra battaglie, avventure e scoperte, vivi la storia di Vinland Saga.<br>
                 Questo e molto altro, nel tour a tema Vinland Saga!<br>
 ', 999.99, '2025-08-01', '2025-08-15', '/AniTour/images/vinlandsaga1.jpg', 'vinland-saga');
 

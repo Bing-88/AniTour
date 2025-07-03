@@ -1,0 +1,246 @@
+.main-content {
+    padding-top: 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding-bottom: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.page-title {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.error-banner {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 500;
+    border-left: 4px solid #e74c3c;
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+}
+
+.checkout-form, .order-summary {
+    background-color: var(--card);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.checkout-form h2, .order-summary h2 {
+    color: var(--secondary);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group.half {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--secondary);
+    border-radius: 0.5rem;
+    font-family: "Farro", sans-serif;
+    background-color: var(--background);
+    transition: all 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 4px 10px rgba(209, 66, 65, 0.3);
+    border-color: var(--primary);
+    background-color: var(--card);
+}
+
+#cardNumber,
+#cardExpiry,
+#cardCvv,
+#cardHolder {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--secondary);
+    border-radius: 0.5rem;
+    font-family: "Farro", sans-serif;
+    background-color: var(--background);
+    transition: all 0.3s;
+}
+
+#cardNumber:focus,
+#cardExpiry:focus, 
+#cardCvv:focus,
+#cardHolder:focus {
+    outline: none;
+    box-shadow: 0 4px 10px rgba(209, 66, 65, 0.3);
+    border-color: var(--primary);
+    background-color: var(--card);
+}
+
+.checkout-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-back, .btn-place-order {
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s;
+    font-weight: 500;
+    font-family: "Farro", sans-serif;
+    cursor: pointer;
+}
+
+.btn-back {
+    flex: 1;
+    background-color: var(--background);
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+.btn-back:hover {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.btn-place-order {
+    flex: 2;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+}
+
+.btn-place-order:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.summary-items {
+    margin-bottom: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item-details h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    color: var(--secondary);
+}
+
+.summary-item-details p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.summary-item-price {
+    font-weight: 500;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-top: 2px solid rgba(0,0,0,0.1);
+}
+
+.total-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+@media (max-width: 900px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .order-summary {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 100px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .checkout-actions {
+        flex-direction: column;
+    }
+}
+
+.field-error {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.error-input {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2) !important;
+    background-color: rgba(231, 76, 60, 0.05) !important;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

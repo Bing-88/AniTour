@@ -105,4 +105,23 @@ public class UserDAO {
             stmt.executeUpdate();
         }
     }
+
+    public User findById(int id) throws SQLException {
+        String sql = "SELECT * FROM users WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setEmail(rs.getString("email"));
+                user.setType(rs.getString("type"));
+                return user;
+            }
+        }
+        return null;
+    }
 }

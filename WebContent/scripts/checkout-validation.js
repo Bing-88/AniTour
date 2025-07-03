@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fullNameRegex = /^[A-Za-zÀ-ÿ\s'-]+\s+[A-Za-zÀ-ÿ\s'-]+$/; // Almeno due parole
     const cityRegex = /^[A-Za-zÀ-ÿ\s'-]+$/; // Solo lettere, spazi e alcuni caratteri speciali
     const postalCodeRegex = /^\d{4,6}$/; // Da 4 a 6 cifre
-    const cardNumberRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$/; // Formati comuni carte di credito
+    const cardNumberRegex = /^\d{16}$|^(\d{4} ){3}\d{4}$/; // Formati carta di credito
     const cvvRegex = /^\d{2,4}$/; // Minimo 2 cifre, massimo 4
     
     // Funzione per aggiungere formattazione al numero della carta
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Validazione numero carta formato carta di credito
     cardNumber.addEventListener('blur', function() {
-        let value = this.value.replace(/\s/g, '');
-        if (!cardNumberRegex.test(value)) {
+        let value = this.value.replace(/\D/g, ''); // Rimuove tutto tranne le cifre
+        if (!cardNumberRegex.test(value) && !cardNumberRegex.test(this.value)) {
             showError(this, 'Inserisci un numero di carta di credito valido');
         } else {
             clearError(this);

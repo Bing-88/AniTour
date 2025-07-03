@@ -112,6 +112,13 @@
                     </div>
                 <% } %>
                 
+                <% String updateTourSuccess = (String) request.getAttribute("updateTourSuccess"); %>
+                <% if (updateTourSuccess != null) { %>
+                    <div class="alert alert-success">
+                        <%= updateTourSuccess %>
+                    </div>
+                <% } %>
+                
                 <% if (isAdmin) { %>
                 <div class="admin-section">
                     <h3>Pannello Amministratore</h3>
@@ -213,13 +220,6 @@
                             <% if (updateTourError != null) { %>
                                 <div class="alert alert-error">
                                     <%= updateTourError %>
-                                </div>
-                            <% } %>
-                            
-                            <% String updateTourSuccess = (String) request.getAttribute("updateTourSuccess"); %>
-                            <% if (updateTourSuccess != null) { %>
-                                <div class="alert alert-success">
-                                    <%= updateTourSuccess %>
                                 </div>
                             <% } %>
                             

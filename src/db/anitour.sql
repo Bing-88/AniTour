@@ -61,13 +61,7 @@ INSERT INTO users (username, password, email, type) VALUES
 ('user', 'user', 'email@example.com', 'user');
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
-('Persona 5', "
-                        Unisciti ai Ladri Fantasma e scopri il mondo di Persona 5!<br>
-                        Maschere calate. Cuori da rubare. Ribellione tra ombre e città lucenti.<br>
-                        Unisciti ai Ladri Fantasma, scopri la verità.
-                        Infiltrati nei Palazzi dell'ordinario, risveglia il tuo io!<br>
-                        Questo e molto altro, nel tour a tema Persona 5!
-", 2039.49, '2025-05-01', '2025-05-15', '/AniTour/images/persona5.jpg', 'persona-5');
+('Persona 5', "Unisciti ai Ladri Fantasma e scopri il mondo di Persona 5! Maschere calate. Cuori da rubare. Ribellione tra ombre e umani corrotti. Unisciti ai Ladri Fantasma, indossa la tua maschera . Infiltrati nei Palazzi dell'ordinario, risveglia il tuo io! Questo e molto altro, nel tour a tema Persona 5!", 2039.49, '2025-05-01', '2025-05-15', '/AniTour/images/persona5.jpg', 'persona-5');
 
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (1, 'Tokyo', 'Visita la capitale del Giappone, esplora i quartieri di Shibuya e Akihabara.', 1),
@@ -75,23 +69,15 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (1, 'Kichijoji', 'Scopri il quartiere di Kichijoji e incontra i tuoi amici.', 3);
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
-('Bloodborne', '
-                Nebbia eterna. Campane lontane. Pietra, sangue e sogni spezzati.<br>
-                Questo ed altro nel tour a tema Bloodborne.
-
-', 770.49, '2025-09-01', '2025-09-10', '/AniTour/images/bloodborne.jpg', 'bloodborne');
+('Bloodborne', 'Nebbia eterna. Campane lontane. Pietra, sangue e sogni spezzati. Questo ed altro nel tour a tema Bloodborne.', 770.49, '2025-09-01', '2025-09-10', '/AniTour/images/bloodborne.jpg', 'bloodborne');
 
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
-(2, 'Yharnam', 'Esplora la città di Yharnam e scopri i suoi segreti oscuri.', 1),
+(2, 'Yharnam', 'Esplora la cittadina di Yharnam e scopri i suoi segreti oscuri.', 1),
 (2, 'Cattedrale di San Adella', 'Visita la cattedrale e affronta le sue creature mostruose.', 2),
-(2, 'Bosco dei Sogni', 'Perditi nel Bosco dei Sogni e scopri la verità dietro il sangue.', 3);
+(2, 'Bosco dei Sogni', 'Perditi nel Bosco dei Sogni e risolvi il mistero dietro il sangue.', 3);
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
-('Sekiro: Shadows Die Twice', '
-                          Lama affilata. Ombre furtive. Onore, vendetta e redenzione.<br>
-                          Tra castelli antichi e spiriti inquieti, cammina la via del lupo solitario.<br>
-                          Questo e molto altro, nel tour a tema Sekiro!<br>
-', 1200.00, '2025-10-01', '2025-10-15', '/AniTour/images/sekiro.jpg', 'sekiro');
+('Sekiro: Shadows Die Twice', 'Lama affilata. Ombre furtive. Onore, vendetta e redenzione. Tra castelli antichi e spiriti inquieti, cammina la via del lupo solitario. Questo e molto altro, nel tour a tema Sekiro!', 1200.00, '2025-10-01', '2025-10-15', '/AniTour/images/sekiro.jpg', 'sekiro');
 
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (3, 'Castello di Ashina', 'Esplora il castello e affronta i suoi guardiani.', 1),
@@ -99,21 +85,15 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (3, 'Tempio Senpou', 'Visita il tempio e incontra i suoi monaci.', 3);
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
-('K-ON!', '
-                Musica, amicizia e momenti indimenticabili.<br>
-                Questo e molto altro, nel tour a tema K-ON!<br>
-', 500.00, '2025-06-01', '2025-06-10', '/AniTour/images/kon1.jpg', 'k-on');
+('K-ON!', 'Musica, amicizia e momenti indimenticabili. Questo e molto altro, nel tour a tema K-ON!', 500.00, '2025-06-01', '2025-06-10', '/AniTour/images/kon1.jpg', 'k-on');
 
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (4, 'Tokyo', 'Visita la capitale del Giappone e scopri i luoghi iconici di K-ON!', 1),
 (4, 'Scuola Sakuragaoka', 'Esplora la scuola e incontra i membri del club di musica leggera.', 2),
-(4, 'Caffè Ho-kago Tea Time', 'Rilassati al caffè e goditi un momento di musica e amicizia.', 3);
+(4, 'Bar Ho-kago Tea Time', 'Rilassati e goditi un momento di musica e amicizia.', 3);
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
-('Outer Wilds', '
-                Esplora l\'universo, scopri antiche civiltà e risolvi il mistero del sistema solare.<br>
-                Questo e molto altro, nel tour a tema Outer Wilds!<br>
-', 40000099.99, '2025-07-01', '2025-07-15', '/AniTour/images/outerwilds.jpg', 'outer-wilds');
+('Outer Wilds', "Esplora l'universo, scopri antiche popolazioni e risolvi il mistero del sistema solare. Questo e molto altro, nel tour a tema Outer Wilds!", 40000099.99, '2025-07-01', '2025-07-15', '/AniTour/images/outerwilds.jpg', 'outer-wilds');
 
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (5, 'Pianeta Hourglass', 'Esplora il pianeta Hourglass e scopri i suoi segreti.', 1),
@@ -121,13 +101,12 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (5, 'Nebulosa di Dark Bramble', 'Perditi nella nebulosa e scopri la verità dietro il mistero.', 3);
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
-('Vinland Saga', '
-                Unisciti a Thorfinn e scopri il mondo dei Vichinghi!<br>
-                Questo e molto altro, nel tour a tema Vinland Saga!<br>
-', 999.99, '2025-08-01', '2025-08-15', '/AniTour/images/vinlandsaga1.jpg', 'vinland-saga');
+('Vinland Saga', 'Unisciti a Thorfinn e scopri il mondo dei Vichinghi! Questo e molto altro, nel tour a tema Vinland Saga!', 999.99, '2025-08-01', '2025-08-15', '/AniTour/images/vinlandsaga1.jpg', 'vinland-saga');
 
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
-(6, 'Islanda', 'Esplora l\'Islanda e scopri i luoghi iconici di Vinland Saga.', 1),
+(6, 'Islanda', "Esplora l'Islanda e scopri i luoghi iconici di Vinland Saga.", 1),
 (6, 'Villaggio di Thorfinn', 'Visita il villaggio e incontra i personaggi della saga.', 2),
 (6, 'Battaglia di Vinland', 'Partecipa alla battaglia e scopri il destino di Thorfinn.', 3);
 
+INSERT INTO bookings (user_id, tour_id, quantity, price, tour_name, tour_image_path, booking_date, status, shipping_name, shipping_address, shipping_city, shipping_country, shipping_postal_code, shipping_email, shipping_phone, payment_method, payment_status, order_identifier) VALUES
+(1, 1, 2, 2039.49, 'Persona 5', '/AniTour/images/persona5.jpg', '2024-11-15 14:30:00', 'completed', 'Admin AniTour', 'Via Roma 123', 'Milano', 'Italia', '20121', 'admin@anitour.it', '+39 02 1234567', 'credit_card', 'completed', 'ORD-2024-001');

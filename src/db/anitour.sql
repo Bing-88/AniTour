@@ -98,7 +98,7 @@ INSERT INTO tours (name, description, price, start_date, end_date, image_path, s
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (5, 'Pianeta Hourglass', 'Esplora il pianeta Hourglass e scopri i suoi segreti.', 1),
 (5, 'Carbonara Quantica', 'Risolvi gli enigmi del formaggioso pianeta Carbonara Quantica.', 2),
-(5, 'Nebulosa di Dark Bramble', 'Perditi nella nebulosa e scopri la verità dietro il mistero.', 3);
+(5, 'Nebulosa di Dark Bramble', 'Perditi nella nebulosa e risolvi il mistero.', 3);
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
 ('Vinland Saga', 'Unisciti a Thorfinn e scopri il mondo dei Vichinghi! Questo e molto altro, nel tour a tema Vinland Saga!', 999.99, '2025-08-01', '2025-08-15', '/AniTour/images/vinlandsaga1.jpg', 'vinland-saga');

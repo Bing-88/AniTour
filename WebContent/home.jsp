@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>AniTour</title>
+        <title>Home - AniTour</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="AniTour is an e-commerce service that provides nerd-themed tours all around the world!">
         <link rel="stylesheet" href="/AniTour/styles/style.css">

@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>AniTour</title>
+        <title>Tours - AniTour</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/AniTour/styles/style.css">
         <link rel="stylesheet" href="/AniTour/styles/tours.css">

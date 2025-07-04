@@ -40,7 +40,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Profilo</title>
+        <title>Profilo - AniTour</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/AniTour/styles/style.css">
         <link rel="stylesheet" href="/AniTour/styles/profile.css">

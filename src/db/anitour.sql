@@ -58,7 +58,9 @@ CREATE TABLE IF NOT EXISTS bookings (
 
 INSERT INTO users (username, password, email, type) VALUES
 ('admin', 'admin', 'admin@anitour.it', 'admin'),
-('user', 'user', 'email@example.com', 'user');
+('user', 'user', 'email@example.com', 'user'),
+('vi', 'password', 'vi@anitour.it', 'user'),
+('salvatore', 'password', 'salvatore@anitour.it', 'user');
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
 ('Persona 5', "Unisciti ai Ladri Fantasma e scopri il mondo di Persona 5! Maschere calate. Cuori da rubare. Ribellione tra ombre e umani corrotti. Unisciti ai Ladri Fantasma, indossa la tua maschera . Infiltrati nei Palazzi dell'ordinario, risveglia il tuo io! Questo e molto altro, nel tour a tema Persona 5!", 2039.49, '2025-05-01', '2025-05-15', '/AniTour/images/persona5.jpg', 'persona-5');
@@ -72,9 +74,9 @@ INSERT INTO tours (name, description, price, start_date, end_date, image_path, s
 ('Bloodborne', 'Nebbia eterna. Campane lontane. Pietra, sangue e sogni spezzati. Questo ed altro nel tour a tema Bloodborne.', 770.49, '2025-09-01', '2025-09-10', '/AniTour/images/bloodborne.jpg', 'bloodborne');
 
 INSERT INTO stops (tour_id, name, description, stop_order) VALUES
-(2, 'Yharnam', 'Esplora la cittadina di Yharnam e scopri i suoi segreti oscuri.', 1),
-(2, 'Cattedrale di San Adella', 'Visita la cattedrale e affronta le sue creature mostruose.', 2),
-(2, 'Bosco dei Sogni', 'Perditi nel Bosco dei Sogni e risolvi il mistero dietro il sangue.', 3);
+(2, 'Castello Bran', 'Il famoso castello che ha ispirato il castello di Dracula. Lo ritroviamo di ispirazione anche per Bloodborne, con il castello di Cainhurst.', 1),
+(2, 'Cattedrale ortodossa di Timisoara', 'Visita il luogo che ha ispirato la Gran Cattedrale del videogioco.', 2),
+(2, 'Praga', 'Yharnam deve pur aver preso ispirazione da qualche luogo. Infatti richiama la storica Praga.', 3);
 
 INSERT INTO tours (name, description, price, start_date, end_date, image_path, slug) VALUES
 ('Sekiro: Shadows Die Twice', 'Lama affilata. Ombre furtive. Onore, vendetta e redenzione. Tra castelli antichi e spiriti inquieti, cammina la via del lupo solitario. Questo e molto altro, nel tour a tema Sekiro!', 1200.00, '2025-10-01', '2025-10-15', '/AniTour/images/sekiro.jpg', 'sekiro');
@@ -109,4 +111,24 @@ INSERT INTO stops (tour_id, name, description, stop_order) VALUES
 (6, 'Battaglia di Vinland', 'Partecipa alla battaglia e scopri il destino di Thorfinn.', 3);
 
 INSERT INTO bookings (user_id, tour_id, quantity, price, tour_name, tour_image_path, booking_date, status, shipping_name, shipping_address, shipping_city, shipping_country, shipping_postal_code, shipping_email, shipping_phone, payment_method, payment_status, order_identifier) VALUES
-(1, 1, 2, 2039.49, 'Persona 5', '/AniTour/images/persona5.jpg', '2024-11-15 14:30:00', 'completed', 'Admin AniTour', 'Via Roma 123', 'Milano', 'Italia', '20121', 'admin@anitour.it', '+39 02 1234567', 'credit_card', 'completed', 'ORD-2024-001');
+(1, 1, 2, 2039.49, 'Persona 5', '/AniTour/images/persona5.jpg', '2024-11-15 14:30:00', 'completed', 'Admin AniTour', 'Via Roma 123', 'Milano', 'Italia', '20121', 'admin@anitour.it', '+39 02 1234567', 'credit_card', 'completed', 'ORD-2024-001'),
+
+-- Ordini per l'utente "vi" (user_id = 3)
+(3, 2, 1, 770.49, 'Bloodborne', '/AniTour/images/bloodborne.jpg', '2024-10-05 16:45:00', 'completed', 'Vincenzo Chiocca', 'Via Garibaldi 45', 'Roma', 'Italia', '00185', 'vi@anitour.it', '+39 06 9876543', 'credit_card', 'completed', 'ORD-2024-002'),
+(3, 4, 3, 500.00, 'K-ON!', '/AniTour/images/kon1.jpg', '2024-12-03 10:20:00', 'completed', 'Vincenzo Chiocca', 'Via Garibaldi 45', 'Roma', 'Italia', '00185', 'vi@anitour.it', '+39 06 9876543', 'credit_card', 'completed', 'ORD-2024-003'),
+(3, 1, 1, 2039.49, 'Persona 5', '/AniTour/images/persona5.jpg', '2025-01-18 14:12:00', 'completed', 'Vincenzo Chiocca', 'Via Garibaldi 45', 'Roma', 'Italia', '00185', 'vi@anitour.it', '+39 06 9876543', 'credit_card', 'completed', 'ORD-2025-001'),
+(3, 6, 2, 999.99, 'Vinland Saga', '/AniTour/images/vinlandsaga1.jpg', '2025-02-14 11:30:00', 'completed', 'Vincenzo Chiocca', 'Via Garibaldi 45', 'Roma', 'Italia', '00185', 'vi@anitour.it', '+39 06 9876543', 'credit_card', 'completed', 'ORD-2025-002'),
+(3, 3, 1, 1200.00, 'Sekiro: Shadows Die Twice', '/AniTour/images/sekiro.jpg', '2025-03-22 13:45:00', 'completed', 'Vincenzo Chiocca', 'Via Garibaldi 45', 'Roma', 'Italia', '00185', 'vi@anitour.it', '+39 06 9876543', 'credit_card', 'completed', 'ORD-2025-003'),
+(3, 2, 2, 770.49, 'Bloodborne', '/AniTour/images/bloodborne.jpg', '2025-04-08 09:15:00', 'completed', 'Vincenzo Chiocca', 'Via Garibaldi 45', 'Roma', 'Italia', '00185', 'vi@anitour.it', '+39 06 9876543', 'credit_card', 'completed', 'ORD-2025-004'),
+(3, 4, 1, 500.00, 'K-ON!', '/AniTour/images/kon1.jpg', '2025-05-12 17:20:00', 'completed', 'Vincenzo Chiocca', 'Via Garibaldi 45', 'Roma', 'Italia', '00185', 'vi@anitour.it', '+39 06 9876543', 'credit_card', 'completed', 'ORD-2025-005'),
+
+-- Ordini per l'utente "salvatore" (user_id = 4)
+(4, 1, 1, 2039.49, 'Persona 5', '/AniTour/images/persona5.jpg', '2024-09-12 12:30:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2024-004'),
+(4, 3, 2, 1200.00, 'Sekiro: Shadows Die Twice', '/AniTour/images/sekiro.jpg', '2024-11-28 15:45:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2024-005'),
+(4, 5, 1, 40000099.99, 'Outer Wilds', '/AniTour/images/outerwilds.jpg', '2024-12-20 10:00:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2024-006'),
+(4, 2, 3, 770.49, 'Bloodborne', '/AniTour/images/bloodborne.jpg', '2025-01-07 18:22:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2025-006'),
+(4, 6, 1, 999.99, 'Vinland Saga', '/AniTour/images/vinlandsaga1.jpg', '2025-02-25 14:10:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2025-007'),
+(4, 4, 2, 500.00, 'K-ON!', '/AniTour/images/kon1.jpg', '2025-03-15 11:50:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2025-008'),
+(4, 1, 2, 2039.49, 'Persona 5', '/AniTour/images/persona5.jpg', '2025-04-30 16:35:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2025-009'),
+(4, 3, 1, 1200.00, 'Sekiro: Shadows Die Twice', '/AniTour/images/sekiro.jpg', '2025-05-20 13:25:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2025-010'),
+(4, 2, 1, 770.49, 'Bloodborne', '/AniTour/images/bloodborne.jpg', '2025-06-10 09:40:00', 'completed', 'Salvatore Merola', 'Corso Vittorio Emanuele 120', 'Napoli', 'Italia', '80134', 'salvatore@anitour.it', '+39 081 5555123', 'credit_card', 'completed', 'ORD-2025-011');

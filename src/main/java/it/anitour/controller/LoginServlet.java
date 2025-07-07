@@ -23,12 +23,8 @@ public class LoginServlet extends HttpServlet {
 
     // Modifica nel metodo doGet per supportare il parametro redirect
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Controlla se c'è un parametro di redirect
-        String redirect = request.getParameter("redirect");
-        if (redirect != null && redirect.equals("checkout")) {
-            request.getSession().setAttribute("redirectAfterLogin", request.getContextPath() + "/checkout");
-        }
-        response.sendRedirect("/AniTour/login");
+        // La gestione redirect è in LoginPageServlet
+        // response.sendRedirect("/AniTour/login");
     }
 
     @Override

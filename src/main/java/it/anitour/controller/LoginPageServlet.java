@@ -15,6 +15,11 @@ public class LoginPageServlet extends HttpServlet {
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Controlla se c'è un parametro di redirect
+        String redirect = request.getParameter("redirect");
+        if (redirect != null && redirect.equals("checkout")) {
+            request.getSession().setAttribute("redirectAfterLogin", request.getContextPath() + "/checkout");
+        }
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
     
